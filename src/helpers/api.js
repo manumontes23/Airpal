@@ -1,18 +1,18 @@
 import Houses from '../data/houses.js';
 import Admins from '../data/houses.js';
 import RT from '../data/rt.js';
-import Crypto from './crypto.js';
 
-getHouses = () => {
+const getHouses = () => {
     //TODO: Call API and get houses
     return Houses;
 }
 
-findAdmin = (admin) => {
-    console.log(CryptoJS.AES.encrypt(admin.password))
+const findAdmin = (admin) => {
     Admins.find(admin)
 }
 
 export default {
-    findAdmin: (a) => { console.log(a)}
+    findAdmin: (admin) => { 
+        return admin
+    }
 }
