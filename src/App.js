@@ -3,6 +3,7 @@ import Header from './Components/Header.js';
 import SignIn from './containers/SignIn'
 import Home from './Components/Home.js';
 import Houses from './Components/Houses.js';
+import RT from './Components/RT.js';
 import api from './helpers/api.js';
 
 class App extends Component {
@@ -24,6 +25,8 @@ class App extends Component {
       break
       case 'houses':
         component2render = <Houses houses={api.getHouses()} />
+        case 'rt':
+        component2render = <RT rt={api.getRT()}/>
     }
     this.setState({
       component2render

@@ -34,7 +34,7 @@ function Header(props) {
     const renderHome = () => {
       props.renderComponent('home');
     }
-
+    
     return (
       <div className={classes.root}>
         <AppBar position="static">
