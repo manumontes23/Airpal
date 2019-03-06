@@ -7,7 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home'
 
 
-import Houses from './houses.js';
+
 
 const styles = theme => ({
     root: {
@@ -25,7 +25,7 @@ function Header(props) {
     const { classes } = props;
 
     const renderHouses = () => {
-      props.renderComponent(<Houses />);
+      props.renderComponent('h');
     }
 
   

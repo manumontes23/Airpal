@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Header from './Components/Header.js';
 import SignIn from './containers/SignIn'
 import Home from './Components/Home.js';
-
+import Houses from './Components/Houses.js';
+import api from './helpers/api.js';
 
 class App extends Component {
 
@@ -10,7 +11,12 @@ class App extends Component {
     component2render: <SignIn />
   }
 
-  renderComponent = (component2render) => {
+  renderComponent = (query) => {
+    let component2render = <Home />;
+    switch(query){
+      case 'h':
+        component2render = <Houses houses={api.getHouses()} />
+    }
     this.setState({
       component2render
     })
