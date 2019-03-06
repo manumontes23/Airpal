@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
+import HomeIcon from '@material-ui/icons/Home'
 
 const styles = {
     root: {
@@ -21,18 +22,18 @@ const styles = {
   
 function Header(props) {
     const { classes } = props;
-    
+  
     return (
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-              ICONO
+              <HomeIcon/>
             </IconButton>
             <Typography variant="h6" color="inherit" className={classes.grow}>
               Newsss
             </Typography>
-            <Button color="inherit">Login</Button>
+            <Button color="inherit" >Ingresar</Button>
           </Toolbar>
         </AppBar>
       </div>
