@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Components/Header.js';
-import SignIn from './containers/SignIn'
+import SignIn from './Components/Signin'
 import Home from './Components/Home.js';
 import Houses from './Components/Houses.js';
 import RT from './Components/RT.js';
@@ -22,7 +22,7 @@ class App extends Component {
         break;
       case 'login':
         component2render = <SignIn logCheck={this.logCheck}/>  
-      break
+        break;
       case 'houses':
         component2render = <Houses houses={api.getHouses()} />
         case 'rt':
@@ -35,10 +35,12 @@ class App extends Component {
   
   logCheck = (event) => {
     //////////TODO: Cambiar la verificación segun el usuarió
-    //if (event.target.value === 1) {
-      this.setState({ isLoggedIn: true})
-    //}
+    if (event.target.value === 1) {
+    }
+    this.setState({ isLoggedIn: true})
     this.renderComponent('home');
+
+
   }
 
   componentDidMount(){
