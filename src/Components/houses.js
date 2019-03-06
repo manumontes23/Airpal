@@ -26,8 +26,9 @@
 //             li
 //                 +data(house)
 
+import React from 'react';
 
-function Houses(){
+function Houses(props){
     return <div> Hola desde Houses</div>
 }
 

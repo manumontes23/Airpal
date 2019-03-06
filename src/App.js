@@ -8,10 +8,16 @@ class App extends Component {
     component2render: <SignIn />
   }
 
+  renderComponent = (component2render) => {
+    this.setState({
+      component2render
+    })
+  }
+  
   render() {
     return (
       <div className="App">
-      <Header />
+      <Header renderComponent={this.renderComponent}/>
         {this.state.component2render}  
       </div>
     );
