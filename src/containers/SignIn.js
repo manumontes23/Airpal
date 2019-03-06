@@ -8,11 +8,10 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import PermIdentity from '@material-ui/icons/PermIdentity';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
-import { red } from '@material-ui/core/colors';
 
 const styles = theme => ({
     main: {
@@ -35,7 +34,7 @@ const styles = theme => ({
     },
     avatar: {
       margin: theme.spacing.unit,
-      backgroundColor: '',
+      backgroundColor: theme.palette.secondary.main,
     },
     form: {
       width: '100%', // Fix IE 11 issue.
@@ -60,7 +59,7 @@ class SignIn extends Component{
             <CssBaseline />
             <Paper className={classes.paper}>
             <Avatar className={classes.avatar}>
-                <PermIdentity />
+                <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
                 Ingresar

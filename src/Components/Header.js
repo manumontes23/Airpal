@@ -33,7 +33,7 @@ function Header(props) {
             <Button color="inherit" className={classes.button}>
               Home
             </Button>
-            <Button color="inherit" className={classes.button}>
+            <Button color="inherit" className={classes.button} >
               Houses
             </Button>
             <Button color="inherit" className={classes.button}>
