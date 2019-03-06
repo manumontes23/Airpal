@@ -14,5 +14,6 @@ findAdmin = (admin) => {
 }
 
 export default {
+    getHouses,
     findAdmin: (a) => { console.log(a)}
 }

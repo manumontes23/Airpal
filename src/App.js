@@ -19,12 +19,17 @@ class App extends Component {
     console.log(event.target.value)
   }
 
+  renderComponent = (component2render) => {
+    this.setState({
+      component2render
+    })
+  }
+  
   render() {
     //Nea aquí a ese loguin como le paso el metodo log Check?
     return (
       <div className="App">
-      <Header isLoggedIn = {this.state.isLoggedIn}/>
-      
+       <Header renderComponent={this.renderComponent} isLoggedIn = {this.state.isLoggedIn}/>
         {this.state.component2render}  
       </div>
     );

@@ -7,6 +7,8 @@ import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home'
 
 
+import Houses from './houses.js';
+
 const styles = theme => ({
     root: {
       flexGrow: 1,
@@ -63,6 +65,7 @@ function Header(props) {
         </div>
       );
     }
+
   }
   
   export default withStyles(styles)(Header);
