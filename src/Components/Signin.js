@@ -48,7 +48,6 @@ const styles = theme => ({
 
 function SignIn(props) {
   const { classes } = props;
-  const [value, setValue] = useState(0);
 
   function send(e) {
       e.preventDefault()

@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home'
+import { withRouter } from 'react-router-dom';
 
 
 
@@ -35,16 +36,40 @@ function Header(props) {
                 <HomeIcon/>
               AIRPAL
             </IconButton> 
-            <Button color="inherit" className={isLoggedIn ? classes.button : classes.hidden}>
+            <Button 
+              color="inherit" 
+              className={isLoggedIn ? classes.button : classes.hidden}
+              onClick={() => props.history.push("/home")}>
               Home
             </Button>
-            <Button color="inherit" className={isLoggedIn ? classes.button : classes.hidden}>
+            <Button               
+              color="inherit" 
+              className={isLoggedIn ? classes.button : classes.hidden}
+              onClick={() => props.history.push("/houses")}>
               Houses
             </Button>
-            <Button color="inherit" className={isLoggedIn ? classes.button : classes.hidden}>
+            <Button               
+              color="inherit" 
+              className={isLoggedIn ? classes.button : classes.hidden}
+              onClick={() => props.history.push("/home")}>
               Displays
             </Button>
-            <Button color="inherit" className={isLoggedIn ? classes.button : classes.hidden}>
+            <Button               
+              color="inherit" 
+              className={isLoggedIn ? classes.button : classes.hidden}
+              onClick={() => props.history.push("/home")}>
+              Admins
+            </Button>
+            <Button               
+              color="inherit" 
+              className={isLoggedIn ? classes.button : classes.hidden}
+              onClick={() => props.history.push("/home")}>
+              Warnings
+            </Button>
+            <Button               
+              color="inherit" 
+              className={isLoggedIn ? classes.button : classes.hidden}
+              onClick={() => console.log("Falta")}>              
               Log Out
             </Button>
           </Toolbar>
@@ -54,4 +79,4 @@ function Header(props) {
   } 
   
   
-  export default withStyles(styles)(Header);
+  export default withRouter(withStyles(styles)(Header));

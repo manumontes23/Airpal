@@ -30,7 +30,7 @@ class App extends Component {
       <div>
         <Header isLoggedIn={this.state.isLoggedIn}/>
         <Route exact path="/" render={() => <SignIn logCheck={this.logCheck}/> } />
-        <Route exact path="/houses" component={Houses} />
+        <Route exact path="/houses" render={() => <Houses houses={api.getHouses()}/> } />
         <Route exact path="/home" component={Home} />
 
       </div>

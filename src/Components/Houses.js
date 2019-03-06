@@ -92,7 +92,8 @@ class ListObject extends Component {
 class NestedList extends Component {
 
   render() {
-    const { classes, houses } = this.props; 
+    const { classes, houses} = this.props; 
+
     return (
       <List
         component="nav"
