@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Header from './Components/Header.js';
+import SignIn from './containers/SignIn'
 import Home from './Components/Home.js';
-import SignIn from './containers/signin-form'
+
+
 class App extends Component {
 
   state = {
