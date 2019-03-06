@@ -1,35 +1,84 @@
-// extends index
-// mixin data(house)
-//     -infoPath = `/app/houses/${house.ID}`
-//     -varPath = `/app/houses/${house.ID}/variables`
-//     -rtPath = `/app/houses/${house.ID}/rt`
-//     div(class="collapsible-header" id=`${house.ID}`)
-//         i(class="material-icons") place
-//         p ID: #{house.ID}.
-//         p Direccion: #{house.ADDRESS}.
-//     div(class="collapsible-body")
-//         span
-//             p Detalles de instalación
-//             p Instalado por: #{house.INSTALLER}
-//             p Fecha: #{house.INSTALLDATE}
-//             div(class='right-align')
-//                 a(class="waves-effect waves-red btn-flat right-align" href=rtPath) RT
-//                 a(class="waves-effect waves-yellow btn-flat right-align" href=varPath) Variables
-//                 a(class="waves-effect waves-teal btn-flat right-align" href=infoPath) Info
-
-// block content
-//     script(src='/js/collapsible.js')
-//     script(src='/js/filter.js')
-//     input(id="txtFilter" onkeyup="filter()")
-//     ul(class="collapsible")
-//         for house in houses
-//             li
-//                 +data(house)
-
 import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Collapse from '@material-ui/core/Collapse';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import DraftsIcon from '@material-ui/icons/Drafts';
+import SendIcon from '@material-ui/icons/Send';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import StarBorder from '@material-ui/icons/StarBorder';
 
-function Houses(props){
-    return <div> Hola desde Houses</div>
+const styles = theme => ({
+  root: {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+  },
+  nested: {
+    paddingLeft: theme.spacing.unit * 4,
+  },
+});
+
+class NestedList extends React.Component {
+  state = {
+    open: true,
+  };
+
+  handleClick = () => {
+    this.setState(state => ({ open: !state.open }));
+  };
+
+  render() {
+    const { classes } = this.props;
+
+    return (
+      <List
+        component="nav"
+        subheader={<ListSubheader component="div">Nested List Items</ListSubheader>}
+        className={classes.root}
+      >
+        <ListItem button>
+          <ListItemIcon>
+            <SendIcon />
+          </ListItemIcon>
+          <ListItemText inset primary="Sent mail" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <DraftsIcon />
+          </ListItemIcon>
+          <ListItemText inset primary="Drafts" />
+        </ListItem>
+        <ListItem button onClick={this.handleClick}>
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText inset primary="Inbox" />
+          {this.state.open ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={this.state.open} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <ListItem button className={classes.nested}>
+              <ListItemIcon>
+                <StarBorder />
+              </ListItemIcon>
+              <ListItemText inset primary="Starred" />
+            </ListItem>
+          </List>
+        </Collapse>
+      </List>
+    );
+  }
 }
 
-export default Houses;
+NestedList.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(NestedList);
