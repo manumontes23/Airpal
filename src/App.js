@@ -4,6 +4,7 @@ import SignIn from './Components/Signin'
 import Home from './Components/Home.js';
 import Houses from './Components/Houses.js';
 import api from './helpers/api.js';
+import { BrowserRouter as Router, Route, Link} from "react-router-dom";
 
 class App extends Component {
 
@@ -11,46 +12,29 @@ class App extends Component {
     component2render: null,
     isLoggedIn: false,
   }
-
-
-  renderComponent = (query) => {
-    let component2render;
-    switch(query){
-      case 'home':
-        component2render = <Home />
-        break;
-      case 'login':
-        component2render = <SignIn logCheck={this.logCheck}/>  
-        break;
-      case 'houses':
-        component2render = <Houses houses={api.getHouses()} />
-    }
-    this.setState({
-      component2render
-    })
-  }
   
-  logCheck = (event) => {
+  logCheck = (event, callback) => {
     //////////TODO: Cambiar la verificación segun el usuarió
-    if (event.target.value === 1) {
+    // if (event.target.value === 1){
+    if (1 === 1) {
+      this.setState({ isLoggedIn: true})
+      callback();
     }
-    this.setState({ isLoggedIn: true})
-    this.renderComponent('home');
-
-
   }
 
-  componentDidMount(){
-    this.renderComponent('login');
-  }
 
   render() {
     //Nea aquí a ese loguin como le paso el metodo log Check?
     return (
-      <div className="App">
-       <Header renderComponent={this.renderComponent} isLoggedIn = {this.state.isLoggedIn}/>
-        {this.state.component2render}  
+      <Router>
+      <div>
+        <Header isLoggedIn={this.state.isLoggedIn}/>
+        <Route exact path="/" render={() => <SignIn logCheck={this.logCheck}/> } />
+        <Route exact path="/houses" component={Houses} />
+        <Route exact path="/home" component={Home} />
+
       </div>
+      </Router>
     );
   }
 }

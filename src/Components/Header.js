@@ -26,14 +26,6 @@ const styles = theme => ({
   
 function Header(props) {
     const { classes, isLoggedIn } = props;
-    
-    const renderHouses = () => {
-      props.renderComponent('houses');
-    }
-
-    const renderHome = () => {
-      props.renderComponent('home');
-    }
 
     return (
       <div className={classes.root}>
@@ -46,7 +38,7 @@ function Header(props) {
             <Button color="inherit" className={isLoggedIn ? classes.button : classes.hidden}>
               Home
             </Button>
-            <Button color="inherit" className={isLoggedIn ? classes.button : classes.hidden} onClick={renderHouses}>
+            <Button color="inherit" className={isLoggedIn ? classes.button : classes.hidden}>
               Houses
             </Button>
             <Button color="inherit" className={isLoggedIn ? classes.button : classes.hidden}>

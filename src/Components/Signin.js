@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+import { withRouter } from 'react-router-dom';
 
 const styles = theme => ({
   main: {
@@ -51,7 +52,8 @@ function SignIn(props) {
 
   function send(e) {
       e.preventDefault()
-      props.logCheck(e)
+      const redirectHome = () => props.history.push("/home"); 
+      props.logCheck(e, redirectHome)
   }
 
   return (
@@ -96,4 +98,4 @@ SignIn.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SignIn);
+export default withRouter(withStyles(styles)(SignIn));
