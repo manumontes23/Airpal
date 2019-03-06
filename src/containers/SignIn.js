@@ -8,7 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import PermIdentity from '@material-ui/icons/PermIdentity';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -52,14 +52,14 @@ class SignIn extends Component{
         }
     }
 
-    render(props) {
-        const {classes} = this.props;
+    render() {
+        const {classes, logCheck} = this.props;
         return (
         <main className={classes.main}>
             <CssBaseline />
             <Paper className={classes.paper}>
             <Avatar className={classes.avatar}>
-                <LockOutlinedIcon />
+                <PermIdentity />
                 </Avatar>
                 <Typography component="h1" variant="h5">
                 Ingresar
@@ -83,6 +83,7 @@ class SignIn extends Component{
                     variant="contained"
                     color="primary"
                     className={classes.submit}
+                    onClick={logCheck}
                 >
                     Ingresar
                 </Button>
