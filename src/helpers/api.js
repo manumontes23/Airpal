@@ -13,7 +13,14 @@ const findAdmin = (admin) => {
     //Admins.find(admin)
 }
 
+
 export default {
     getHouses,
+    getRT,
     findAdmin: (a) => { console.log(a)}
+}
+
+const getRT = () => {
+    //TODO: Call API and get RT
+    return RT;
 }
