@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import Header from './Components/Header.js';
+import Home from './Components/Home.js';
+
 class App extends Component {
+
+  state = {
+    component2render: <Home />
+  }
+
   render() {
     return (
       <div className="App">
       <Header />
-        <h1> oa </h1>
+        {this.state.component2render}
       </div>
     );
   }
