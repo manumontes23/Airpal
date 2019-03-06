@@ -22,35 +22,50 @@ const styles = theme => ({
   })
   
 function Header(props) {
-    const { classes } = props;
-
-    const renderHouses = () => {
-      props.renderComponent(<Houses />);
+    const { classes, isLoggedIn } = props;
+    
+    if (isLoggedIn) {
+      return (
+        <div className={classes.root}>
+          <AppBar position="static">
+            <Toolbar>
+              <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+                 <HomeIcon/>
+                AIRPAL
+              </IconButton> 
+              <Button color="inherit" className={classes.button}>
+                Home
+              </Button>
+              <Button color="inherit" className={classes.button} >
+                Houses
+              </Button>
+              <Button color="inherit" className={classes.button}>
+                Displays
+              </Button>
+              <Button color="inherit">Login</Button>
+            </Toolbar>
+          </AppBar>
+        </div>
+      );
+    } else {
+      return (
+        <div className={classes.root}>
+          <AppBar position="static">
+            <Toolbar>
+              <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+                 <HomeIcon/>
+                AIRPAL
+              </IconButton> 
+              <Button color="inherit" className={classes.button}>
+                Home
+              </Button>
+              <Button color="inherit">Login</Button>
+            </Toolbar>
+          </AppBar>
+        </div>
+      );
     }
 
-  
-    return (
-      <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-               <HomeIcon/>
-              AIRPAL
-            </IconButton> 
-            <Button color="inherit" className={classes.button}>
-              Home
-            </Button>
-            <Button color="inherit" className={classes.button} onClick={renderHouses}>
-              Houses
-            </Button>
-            <Button color="inherit" className={classes.button}>
-              Displays
-            </Button>
-            <Button color="inherit">Login</Button>
-          </Toolbar>
-        </AppBar>
-      </div>
-    );
   }
   
   export default withStyles(styles)(Header);
