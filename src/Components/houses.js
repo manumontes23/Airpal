@@ -19,6 +19,9 @@ const styles = theme => ({
   nested: {
     paddingLeft: theme.spacing.unit * 4,
   },
+  info: {
+    paddingLeft: theme.spacing.unit * 5,
+  },
   map: {
     paddingLeft: theme.spacing.unit * 5,
     paddingRight: theme.spacing.unit * 5
@@ -58,18 +61,20 @@ class ListObject extends Component {
                 <p>DISPLAY: {house.DISPLAY} </p>
                 <p>EMAIL: {house.ID}</p> 
                 <p>PHONE NUMBER: {house.LASTNAME} {house.NAME}</p>
-                <p>RESIDENTNUMBER: {house.ADDRESS} </p>
-                <p>FLOORNUMBER: {house.FLOORNUMBER} </p>
-                <p>REVOKEHOUSE: {house.REVOKEHOUSE} </p>
-                <p>SMOKERSNUMBER: {house.SMOKERSNUMBER} </p>
-                <p>PETSNUMBER: {house.PETSNUMBER} </p>
-                <p>FLOORMATERIAL: {house.FLOORMATERIAL} </p>
-                <p>WALLSMATERIAL: {house.WALLSMATERIAL} </p>
-                <p>PAINTTYPE: {house.PAINTTYPE} </p>
-                <p>LATITUDE: {house.LATITUDE} </p>
-                <p>ALTITUDE: {house.ALTITUDE} </p>
-                <p>LONGITUDE: {house.LONGITUDE} </p>
-                <p>INSTALLED FOR: {house.INSTALLER} ON: {house.INSTALLDATE.substring(0,10)}</p>
+                <p>NUMBER OF RESIDENTS: {house.ADDRESS} </p>
+                <p>NUMBER OF FLOORS: {house.FLOORNUMBER} </p>
+                <p>NUMBER OF SMOKERS: {house.SMOKERSNUMBER} </p>
+                <p>NUMBER OF PETS: {house.PETSNUMBER} </p>
+                <p>IS REVOKED: {house.REVOKEHOUSE} </p>
+            </div>
+            <div className={classes.info}>
+              <p>FLOOR MATERIAL: {house.FLOORMATERIAL} </p>
+              <p>WALLS MATERIAL: {house.WALLSMATERIAL} </p>
+              <p>PAINT TYPE: {house.PAINTTYPE} </p>
+              <p>LATITUDE: {house.LATITUDE} </p>
+              <p>ALTITUDE: {house.ALTITUDE} </p>
+              <p>LONGITUDE: {house.LONGITUDE} </p>
+              <p>INSTALLED FOR: {house.INSTALLER} ON: {house.INSTALLDATE.substring(0,10)}</p>
             </div>
             <div className={classes.map}>
               {/* TODO: MAP GOES HERE */}

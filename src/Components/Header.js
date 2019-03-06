@@ -18,39 +18,48 @@ const styles = theme => ({
     },
     button: {
       margin: theme.spacing.unit,
+    },
+    hidden: {
+      display: "none"
     }
   })
   
 function Header(props) {
-    const { classes } = props;
-
+    const { classes, isLoggedIn } = props;
+    
     const renderHouses = () => {
-      props.renderComponent('h');
+      props.renderComponent('houses');
     }
 
-  
+    const renderHome = () => {
+      props.renderComponent('home');
+    }
+
     return (
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-               <HomeIcon/>
+                <HomeIcon/>
               AIRPAL
             </IconButton> 
-            <Button color="inherit" className={classes.button}>
+            <Button color="inherit" className={isLoggedIn ? classes.button : classes.hidden}>
               Home
             </Button>
-            <Button color="inherit" className={classes.button} onClick={renderHouses}>
+            <Button color="inherit" className={isLoggedIn ? classes.button : classes.hidden} onClick={renderHouses}>
               Houses
             </Button>
-            <Button color="inherit" className={classes.button}>
+            <Button color="inherit" className={isLoggedIn ? classes.button : classes.hidden}>
               Displays
             </Button>
-            <Button color="inherit">Login</Button>
+            <Button color="inherit" className={isLoggedIn ? classes.button : classes.hidden}>
+              Log Out
+            </Button>
           </Toolbar>
         </AppBar>
       </div>
     );
-  }
+  } 
+  
   
   export default withStyles(styles)(Header);

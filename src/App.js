@@ -8,13 +8,21 @@ import api from './helpers/api.js';
 class App extends Component {
 
   state = {
-    component2render: <SignIn />
+    component2render: null,
+    isLoggedIn: false,
   }
 
+
   renderComponent = (query) => {
-    let component2render = <Home />;
+    let component2render;
     switch(query){
-      case 'h':
+      case 'home':
+        component2render = <Home />
+        break;
+      case 'login':
+        component2render = <SignIn logCheck={this.logCheck}/>  
+      break
+      case 'houses':
         component2render = <Houses houses={api.getHouses()} />
     }
     this.setState({
@@ -22,10 +30,23 @@ class App extends Component {
     })
   }
   
+  logCheck = (event) => {
+    //////////TODO: Cambiar la verificación segun el usuarió
+    //if (event.target.value === 1) {
+      this.setState({ isLoggedIn: true})
+    //}
+    this.renderComponent('home');
+  }
+
+  componentDidMount(){
+    this.renderComponent('login');
+  }
+
   render() {
+    //Nea aquí a ese loguin como le paso el metodo log Check?
     return (
       <div className="App">
-      <Header renderComponent={this.renderComponent}/>
+       <Header renderComponent={this.renderComponent} isLoggedIn = {this.state.isLoggedIn}/>
         {this.state.component2render}  
       </div>
     );
