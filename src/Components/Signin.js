@@ -51,7 +51,7 @@ function SignIn(props) {
 
   function send(e) {
       e.preventDefault()
-      console.log(e.target.email.value)
+      props.logCheck(e)
   }
 
   return (

@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import Header from './Components/Header.js';
-<<<<<<< HEAD
-import Signin from './Components/Signin.js';
-=======
-import SignIn from './containers/SignIn'
+import SignIn from './Components/Signin'
 import Home from './Components/Home.js';
 import Houses from './Components/Houses.js';
->>>>>>> c3b07d7dfc456e447d22dfaa4579ecae820bf6ff
 import api from './helpers/api.js';
 
 class App extends Component {
@@ -25,7 +21,7 @@ class App extends Component {
         break;
       case 'login':
         component2render = <SignIn logCheck={this.logCheck}/>  
-      break
+        break;
       case 'houses':
         component2render = <Houses houses={api.getHouses()} />
     }
@@ -36,10 +32,12 @@ class App extends Component {
   
   logCheck = (event) => {
     //////////TODO: Cambiar la verificación segun el usuarió
-    //if (event.target.value === 1) {
-      this.setState({ isLoggedIn: true})
-    //}
+    if (event.target.value === 1) {
+    }
+    this.setState({ isLoggedIn: true})
     this.renderComponent('home');
+
+
   }
 
   componentDidMount(){
@@ -47,21 +45,11 @@ class App extends Component {
   }
 
   render() {
-<<<<<<< HEAD
-    console.log("OA");
-    api.findAdmin("OA");
-    return (
-      <div className="App">
-      <Header />
-       <Signin/>
-
-=======
     //Nea aquí a ese loguin como le paso el metodo log Check?
     return (
       <div className="App">
        <Header renderComponent={this.renderComponent} isLoggedIn = {this.state.isLoggedIn}/>
         {this.state.component2render}  
->>>>>>> c3b07d7dfc456e447d22dfaa4579ecae820bf6ff
       </div>
     );
   }
