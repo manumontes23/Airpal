@@ -27,7 +27,19 @@ const styles = theme => ({
   
 function Header(props) {
     const { classes, isLoggedIn } = props;
+<<<<<<< HEAD
 
+=======
+    
+    const renderHouses = () => {
+      props.renderComponent('houses');
+    }
+
+    const renderHome = () => {
+      props.renderComponent('home');
+    }
+    
+>>>>>>> f1b0a88f4b478ca1ba583b3e3150c1dfb791febb
     return (
       <div className={classes.root}>
         <AppBar position="static">

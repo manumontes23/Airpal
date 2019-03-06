@@ -3,6 +3,7 @@ import Header from './Components/Header.js';
 import SignIn from './Components/Signin'
 import Home from './Components/Home.js';
 import Houses from './Components/Houses.js';
+import RT from './Components/RT.js';
 import api from './helpers/api.js';
 import { BrowserRouter as Router, Route, Link} from "react-router-dom";
 
@@ -12,6 +13,29 @@ class App extends Component {
     component2render: null,
     isLoggedIn: false,
   }
+<<<<<<< HEAD
+=======
+
+
+  renderComponent = (query) => {
+    let component2render;
+    switch(query){
+      case 'home':
+        component2render = <Home />
+        break;
+      case 'login':
+        component2render = <SignIn logCheck={this.logCheck}/>  
+        break;
+      case 'houses':
+        component2render = <Houses houses={api.getHouses()} />
+        case 'rt':
+        component2render = <RT rt={api.getRT()}/>
+    }
+    this.setState({
+      component2render
+    })
+  }
+>>>>>>> f1b0a88f4b478ca1ba583b3e3150c1dfb791febb
   
   logCheck = (event, callback) => {
     //////////TODO: Cambiar la verificación segun el usuarió
