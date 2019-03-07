@@ -29,7 +29,7 @@ const styles = theme => ({
   class ListObject extends Component {    
         
       render(){
-          const { classes, RT } = this.props;
+          const { classes, rt } = this.props;
           return (
           <div>
             <ListItem button onClick={this.handleClick}>              
@@ -53,7 +53,7 @@ const styles = theme => ({
   class NestedList extends Component {
   
     render() {
-      const { classes, rt } = this.props; 
+      const { classes, RT } = this.props; 
       return (
         <List
           component="nav"

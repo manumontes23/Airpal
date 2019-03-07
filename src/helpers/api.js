@@ -1,6 +1,6 @@
 import Houses from '../data/houses.js';
 //import Admins from '../data/houses.js';
-//import RT from '../data/rt.js';
+import RT from '../data/rt.js';
 //import Crypto from './crypto.js';
 
 const getHouses = () => {
