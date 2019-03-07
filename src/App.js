@@ -5,7 +5,9 @@ import Home from './Components/Home.js';
 import Houses from './Components/Houses.js';
 import RT from './Components/RT.js';
 import api from './helpers/api.js';
+import Grid from '@material-ui/core/Grid';
 import { BrowserRouter as Router, Route, Link} from "react-router-dom";
+import InfoDisplay from './Components/InfoDisplay.js';
 
 class App extends Component {
 
@@ -13,8 +15,6 @@ class App extends Component {
     component2render: null,
     isLoggedIn: false,
   }
-<<<<<<< HEAD
-=======
 
 
   renderComponent = (query) => {
@@ -27,15 +27,20 @@ class App extends Component {
         component2render = <SignIn logCheck={this.logCheck}/>  
         break;
       case 'houses':
-        component2render = <Houses houses={api.getHouses()} />
-        case 'rt':
+        component2render = 
+        <div>
+          <Grid item>
+            <Houses houses={api.getHouses()} />
+            <InfoDisplay info={RT}/>
+          </Grid>
+        </div>
+      case 'rt':
         component2render = <RT rt={api.getRT()}/>
     }
     this.setState({
       component2render
     })
   }
->>>>>>> f1b0a88f4b478ca1ba583b3e3150c1dfb791febb
   
   logCheck = (event, callback) => {
     //////////TODO: Cambiar la verificación segun el usuarió
