@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import RT from '../data/rt'
 
 const styles = theme => ({
     root: {
@@ -18,28 +19,35 @@ const styles = theme => ({
 })
 
 class InfoDisplay extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        this.state = {
+            houseid: this.props.id,
+            rt: null,
+        }
     }
 
     render() {
-        const {classes, info} = this.props;
+        //Filtrar el RT
+        const actualRT = RT.filter(t => t.id == 1)
+        console.log('rt',actualRT)
+        console.log('houseid',this.state.houseid)
+
         return (
             <div>
-                <Paper className={classes.paper}>
+                <Paper >
                     <Grid container spacing={16}>
                         <Grid item xs={12} sm container>
                             <Grid item xs container direction="column" spacing={16}>
                                 <Grid item xs>
-                                    <Typography gutterBottom variant="subtitle1">
-                                        {info.id}
+                                    <Typography align='center' variant="subtitle1" >
                                     </Typography>
-                                    <Typography variant="h4">{info.datetime}
+                                    <Typography variant="inherit">AA
                                     </Typography>
-                                    <Typography variant="h4">{info.temperatura}</Typography>
-                                    <Typography variant="h4">{info.humidity}</Typography>
-                                    <Typography variant="h4">{info.pressure}</Typography>
-                                    <Typography variant="h4">{info.display}</Typography>
+                                    <Typography variant="inherit">EE</Typography>
+                                    <Typography variant="inherit">EE</Typography>
+                                    <Typography variant="inherit">EE</Typography>
+                                    <Typography variant="inherit">EE</Typography>
                                 </Grid>
                             </Grid>
                         </Grid>
