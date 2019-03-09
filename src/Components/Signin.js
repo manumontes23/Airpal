@@ -46,13 +46,24 @@ const styles = theme => ({
   },
 });
 
+
+/**
+ * 
+ * @props
+ * {
+ *  isLoggedIn -> Bool variable that says if the user is logged in or not (Cookies, specially)
+ * } 
+ */
 function SignIn(props) {
+  const redirectHome = () => props.history.push("/home"); 
+
+  if(props.isLoggedIn) redirectHome();
+
   const { classes } = props;
 
   function send(e) {
-      e.preventDefault()
-      const redirectHome = () => props.history.push("/home"); 
-      props.logCheck(e, redirectHome)
+      e.preventDefault();
+      props.logCheck(e, redirectHome);
   }
 
   return (
@@ -67,7 +78,7 @@ function SignIn(props) {
         </Typography>
         <form className={classes.form} onSubmit={send}>
           <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="email">Email</InputLabel>
+            <InputLabel htmlFor="email">ID</InputLabel>
             <Input id="email" name="email" autoComplete="email" autoFocus />
           </FormControl>
           <FormControl margin="normal" required fullWidth>

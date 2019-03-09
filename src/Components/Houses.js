@@ -11,8 +11,7 @@ import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import { HomeIcon } from './Icons.js';
-import { Grid } from '@material-ui/core';
-import RT from '../data/rt';
+import { Grid, CircularProgress } from '@material-ui/core';
 import api from '../helpers/api';
 
 const styles = theme => ({
@@ -26,10 +25,7 @@ const styles = theme => ({
   info: {
     paddingLeft: theme.spacing.unit * 5,
   },
-  map: {
-    paddingLeft: theme.spacing.unit * 5,
-    paddingRight: theme.spacing.unit * 5
-  }
+
 });
 
 
@@ -43,17 +39,8 @@ class ListObject extends Component {
       }
     }
 
-    componentDidMount(){
-      this.getHouseRT();
-    }
-
-    getHouseRT = async () => {
-      const rt = await this.getHouseRT(this.state.houseid);
-      this.setState(rt);
-    }
-
     handleClick = () => {
-        this.setState(state => ({ open: !state.open}));
+      this.setState(state => ({ open: !state.open}));
     };
 
     render(){
@@ -78,14 +65,13 @@ class ListObject extends Component {
               <Grid item direction="column">
                 <div>
                     <p>DISPLAY: {house.DISPLAY} </p>
-                    <p>EMAIL: {house.ID}</p> 
+                    <p>EMAIL: {house.EMAIL}</p> 
                     <p>PHONE NUMBER: {house.LASTNAME} {house.NAME}</p>
                     <p>NUMBER OF RESIDENTS: {house.ADDRESS} </p>
                     <p>NUMBER OF FLOORS: {house.FLOORNUMBER} </p>
                     <p>NUMBER OF SMOKERS: {house.SMOKERSNUMBER} </p>
                     <p>NUMBER OF PETS: {house.PETSNUMBER} </p>
                     <p>IS REVOKED: {house.REVOKEHOUSE} </p>
-                  <div className={classes.info}>
                     <p>FLOOR MATERIAL: {house.FLOORMATERIAL} </p>
                     <p>WALLS MATERIAL: {house.WALLSMATERIAL} </p>
                     <p>PAINT TYPE: {house.PAINTTYPE} </p>
@@ -93,11 +79,10 @@ class ListObject extends Component {
                     <p>ALTITUDE: {house.ALTITUDE} </p>
                     <p>LONGITUDE: {house.LONGITUDE} </p>
                     <p>INSTALLED FOR: {house.INSTALLER} ON: {house.INSTALLDATE.substring(0,10)}</p>
-                  </div> 
                 </div>
               </Grid>
               <Grid item xs>
-                <InfoDisplay rt={this.state.rt}/>
+                <InfoDisplay houseid={house.ID}/>
               </Grid>
             </Grid>
               </ListItem>
@@ -111,7 +96,7 @@ class ListObject extends Component {
 class NestedList extends Component {
 
   state = {
-    houses: []
+    houses: null
   }
 
   componentDidMount() {
@@ -123,13 +108,23 @@ class NestedList extends Component {
     this.setState({houses});
   }
 
+  renderProgressIndicator = () => {
+    const { classes } = this.props; 
+    return <Grid   
+            container
+            alignItems="center"
+            justify="center"
+            style={{ minHeight: '100vh' }}>
+      <CircularProgress 
+        size = {100}
+        className={classes.progress} color="primary" />
+    </Grid>
+  }
 
-  render() {
+  renderHouses = () => {
     const { classes } = this.props; 
     const { houses } = this.state;
-
-    return (
-      <List
+    return <List
         component="nav"
         subheader={<ListSubheader component="div">All the houses registered in Airpal DB</ListSubheader>}
         className={classes.root}
@@ -137,7 +132,12 @@ class NestedList extends Component {
         {houses.map(house => {
           return <ListObject classes={classes} house={house} key={house.ID}/>
         })}
-      </List>
+    </List>
+  }
+
+  render() {
+    return (
+      this.state.houses ? this.renderHouses() : this.renderProgressIndicator()
     );
   }
 }
