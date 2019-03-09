@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Airpal/precache-manifest.d44f0acc282bd9cab32a6116e86e06a5.js"
+  "/Airpal/precache-manifest.85fcf78704ad7ca216eacbd33a722c19.js"
 );
 
 workbox.clientsClaim();
