@@ -10,28 +10,7 @@ import { BrowserRouter as Router, Route, Link} from "react-router-dom";
 class App extends Component {
 
   state = {
-    component2render: null,
     isLoggedIn: false,
-  }
-
-
-  renderComponent = (query) => {
-    let component2render;
-    switch(query){
-      case 'home':
-        component2render = <Home />
-        break;
-      case 'login':
-        component2render = <SignIn logCheck={this.logCheck}/>  
-        break;
-      case 'houses':
-        component2render = <Houses houses={api.getHouses()} />
-        case 'rt':
-        component2render = <RT rt={api.getRT()}/>
-    }
-    this.setState({
-      component2render
-    })
   }
   
   
@@ -54,7 +33,7 @@ class App extends Component {
       <div>
         <Header isLoggedIn={this.state.isLoggedIn}/>
         <Route exact path="/" render={() => <SignIn logCheck={this.logCheck}/> } />
-        <Route exact path="/houses" render={() =>  <Houses houses={api.getHouses()}/>} />
+        <Route exact path="/houses" render={() =>  <Houses />} />
         <Route exact path="/home" component={Home} />
 
       </div>

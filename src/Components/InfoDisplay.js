@@ -29,40 +29,40 @@ class InfoDisplay extends Component {
 
     render() {
         //Filtrar el RT
-        const actualRT = RT.filter(t => t.ID == this.state.houseid)
-        console.log('rt',actualRT)
-        console.log('houseid',this.state.houseid)
-
-        return (
-            <div>
-                <Paper >
-                    <Grid container spacing={16}>
-                        <Grid item xs={12} sm container>
-                            <Grid item xs container direction="column" spacing={16}>
-                                <Grid item xs>
-                                    <Typography align='center' variant="subtitle1" >
-                                        {actualRT[0].ID}
-                                    </Typography>
-                                    <Typography align='center'variant="inherit">
-                                    TEMPERATURA: {actualRT[0].TEMPERATURA}
-                                    </Typography>
-                                    <Typography align='center'variant="inherit">
-                                    FECHA: {actualRT[0].DATETIME}</Typography>
-                                    <Typography align='center'variant="inherit">CONCENTRACIÓN: {actualRT[0].CONCENTRATION}</Typography>
-                                    <Typography align='center'variant="inherit">HUMEDAD: {actualRT[0].HUMIDITY}</Typography>
-                                    <Typography align='center'variant="inherit">PRESIÓN: {actualRT[0].PRESSURE}</Typography>
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                </Paper>
-            </div>
-        );
+        const {rt} = this.props;
+        const actualRT = rt;
+        console.log(rt);
+        return <h1>OA</h1>
+        // return (
+        //     <div>
+        //         <Paper >
+        //             <Grid container spacing={16}>
+        //                 <Grid item xs={12} sm container>
+        //                     <Grid item xs container direction="column" spacing={16}>
+        //                         <Grid item xs>
+        //                             <Typography align='center' variant="subtitle1" >
+        //                                 {actualRT[0].ID}
+        //                             </Typography>
+        //                             <Typography align='center'variant="inherit">
+        //                             TEMPERATURA: {actualRT[0].TEMPERATURA}
+        //                             </Typography>
+        //                             <Typography align='center'variant="inherit">
+        //                             FECHA: {actualRT[0].DATETIME}</Typography>
+        //                             <Typography align='center'variant="inherit">CONCENTRACIÓN: {actualRT[0].CONCENTRATION}</Typography>
+        //                             <Typography align='center'variant="inherit">HUMEDAD: {actualRT[0].HUMIDITY}</Typography>
+        //                             <Typography align='center'variant="inherit">PRESIÓN: {actualRT[0].PRESSURE}</Typography>
+        //                         </Grid>
+        //                     </Grid>
+        //                 </Grid>
+        //             </Grid>
+        //         </Paper>
+        //     </div>
+        // );
     }
 }
 
 InfoDisplay.propTypes = {
     classes: PropTypes.object.isRequired,
 };
-  
+
 export default withStyles(styles)(InfoDisplay);

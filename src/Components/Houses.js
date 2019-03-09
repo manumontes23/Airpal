@@ -13,6 +13,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import { HomeIcon } from './Icons.js';
 import { Grid } from '@material-ui/core';
 import RT from '../data/rt';
+import api from '../helpers/api';
 
 const styles = theme => ({
   root: {
@@ -38,9 +39,18 @@ class ListObject extends Component {
     this.state = {
         open: true,
         houseid: this.props.house.ID,
+        rt: {}
       }
     }
 
+    componentDidMount(){
+      this.getHouseRT();
+    }
+
+    getHouseRT = async () => {
+      const rt = await this.getHouseRT(this.state.houseid);
+      this.setState(rt);
+    }
 
     handleClick = () => {
         this.setState(state => ({ open: !state.open}));
@@ -51,11 +61,11 @@ class ListObject extends Component {
         return (
         <div>
           <ListItem button onClick={this.handleClick}>
-            <ListItemIcon>
+            <ListItemIcon>  
               <HomeIcon />  
             </ListItemIcon>
             <div>
-                <p>ID: {house.id}</p> 
+                <p>ID: {house.ID}</p> 
                 <p>FULL NAME: {house.LASTNAME} {house.NAME}</p>
                 <p>ADDRESS: {house.ADDRESS} </p>
             </div>
@@ -87,14 +97,12 @@ class ListObject extends Component {
                 </div>
               </Grid>
               <Grid item xs>
-                <InfoDisplay id={this.state.houseid}/>
+                <InfoDisplay rt={this.state.rt}/>
               </Grid>
             </Grid>
               </ListItem>
               </List>
           </Collapse>
-          <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGsYTyBvpy_UOWl8VWJF27Yz8TD6iPWTU" />
-          <script src="../helpers/map.js" />
         </div>
         )
         }
@@ -102,8 +110,23 @@ class ListObject extends Component {
 
 class NestedList extends Component {
 
+  state = {
+    houses: []
+  }
+
+  componentDidMount() {
+    this.getHouses();
+  }
+
+  getHouses = async () => {
+    const houses = await api.getHouses();
+    this.setState({houses});
+  }
+
+
   render() {
-    const { classes, houses} = this.props; 
+    const { classes } = this.props; 
+    const { houses } = this.state;
 
     return (
       <List
