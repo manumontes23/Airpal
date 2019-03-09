@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/Airpal/static/css/main.3a18453b.chunk.css"
   },
   {
-    "revision": "08cf7825da3b05f95e399265fd03efab",
+    "revision": "ee28d2f5788d0b92c80210970b28d090",
     "url": "/Airpal/index.html"
   }
 ];
