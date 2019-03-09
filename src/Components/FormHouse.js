@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Input, Button } from '@material-ui/core';
+import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Button } from '@material-ui/core';
 
 
 const styles = theme => ({
@@ -54,7 +54,8 @@ const styles = theme => ({
   },
   helperText: {
     color: '#424242',
-    fontStyle: 'italic'
+    fontStyle: 'italic',
+    fontSize: '1.3em'
   }
 });
 
@@ -122,7 +123,6 @@ class FormHouse extends React.Component {
                   variant='filled'
                   required={true}
                   label='Apellidos'
-                  required={true}
                   className={classes.textField}/>
                 <TextField 
                   id='house-email'
@@ -170,7 +170,7 @@ class FormHouse extends React.Component {
                 variant='filled'
                 label='Numero de piso'
                 helperText={
-                  <Typography className={classes.helperText}>Segun la altidud del piso en el edificio</Typography>
+                  <label className={classes.helperText}>Segun la altidud del piso en el edificio</label>
                 }
                 className={classes.textField}
                 type='number'/>
@@ -195,7 +195,7 @@ class FormHouse extends React.Component {
                 name='SMOKERSNUMBER'
                 label='Numero de fumadores'
                 helperText={
-                  <Typography className={classes.helperText}>Si no hay fumadores ingrese 0</Typography>
+                  <label className={classes.helperText}>Si no hay fumadores ingrese 0</label>
                 }
                 type='number'
                 required={true}
@@ -206,7 +206,7 @@ class FormHouse extends React.Component {
                 label='Numero de mascotas'
                 variant='filled'
                 helperText={
-                  <Typography className={classes.helperText}>Si no hay, ingrese 0</Typography>
+                  <label className={classes.helperText}>Si no hay, ingrese 0</label>
                 }
                 required={true}
                 className={classes.textField}
@@ -234,7 +234,7 @@ class FormHouse extends React.Component {
                 required={true}/>
             </ExpansionPanelDetails>
           </ExpansionPanel>
-          <Button variant='raised' className={classes.button} onSubmit={this.sendForm}>Registrar</Button>
+          <Button variant='contained' className={classes.button} onSubmit={this.sendForm}>Registrar</Button>
         </form>
       </div>
     );

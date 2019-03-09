@@ -6,7 +6,6 @@ import Houses from './Components/Houses.js';
 import { BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 import Cookies from './helpers/Cookies.js';
 import api from './helpers/api.js';
-import c from 'js-cookie';
 
 class App extends Component {
 
