@@ -4,18 +4,19 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import ButtonBase from '@material-ui/core/ButtonBase';
 import api from '../helpers/api';
 import { CircularProgress } from '@material-ui/core';
+import Divider from '@material-ui/core/Divider'
 
 const styles = theme => ({
     root: {
       flexGrow: 1,
     },
     paper: {
-      padding: theme.spacing.unit * 2,
+      padding: theme.spacing.unit,
       margin: 'auto',
-      maxWidth: 500,
+      maxWidth: 700,
+      backgroundColor: '#9e9e9e'
     }
 })
 
@@ -70,27 +71,28 @@ class InfoDisplay extends Component {
      */
     renderInfo(){
         const { rt } = this.state;
-        return <div>
-        <Paper >
-            <Grid container spacing={16}>
-                <Grid item xs={12} sm container>
-                    <Grid item xs container direction="column" spacing={16}>
-                        <Grid item xs>
-                            <Typography align='center' variant="subtitle1" >
-                                {rt.ID}
-                            </Typography>
-                            <Typography align='center'variant="inherit">
-                            TEMPERATURA: {rt.TEMPERATURE}
-                            </Typography>
-                            <Typography align='center'variant="inherit">
-                            FECHA: {rt.DATETIME}</Typography>
-                            <Typography align='center'variant="inherit">CONCENTRACIÓN: {rt.CONCENTRATION}</Typography>
-                            <Typography align='center'variant="inherit">HUMEDAD: {rt.HUMIDITY}</Typography>
-                            <Typography align='center'variant="inherit">PRESIÓN: {rt.PRESSURE}</Typography>
-                        </Grid>
-                    </Grid>
-                </Grid>
-            </Grid>
+        const {classes} = this.props;
+        return <div className={classes.root}>
+        <Paper className={classes.paper} square={false} elevation={6}>
+            <Typography variant="subtitle1">
+                DISPOSITIVO: {rt.ID}
+            </Typography>
+            <Divider />
+            <Typography>
+                TEMPERATURA: {rt.TEMPERATURE}
+            </Typography>
+            <Typography>
+                FECHA: {rt.DATETIME}
+            </Typography>
+            <Typography>
+                CONCENTRACIÓN: {rt.CONCENTRATION}
+            </Typography>
+            <Typography>
+                HUMEDAD: {rt.HUMIDITY}
+            </Typography>
+            <Typography>
+                PRESIÓN: {rt.PRESSURE}
+            </Typography>   
         </Paper>
     </div>
     }
@@ -101,7 +103,6 @@ class InfoDisplay extends Component {
      * Else, it will render de progress circle
      */
     render() {
-        const { res_status } = this.props;
         if(this.state.not_found) return <h3 style = {{color: "red"}}> Error 418 I'm a teapot </h3>
         return (
             this.state.rt ?  this.renderInfo() : this.renderProgressIndicator()
