@@ -20,7 +20,6 @@ const styles = theme => ({
   },
   nested: {
     paddingLeft: theme.spacing.unit * 4,
-    backgroundColor: '#212121'
   },
   info: {
     paddingLeft: theme.spacing.unit * 5,
@@ -45,7 +44,7 @@ const styles = theme => ({
   },
   subheader: {
     color: '#2962ff',
-    backgroundColor: 'rgba(224,224,224,0.9s)'
+    backgroundColor: 'rgba(224,224,224,0.9)'
   },
 });
 
