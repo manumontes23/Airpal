@@ -4,7 +4,7 @@ const urls = {
     houses: `${api_ip}/house`,
     housert: `${api_ip}/house/rt`,
     admin_login: `${api_ip}/admin/login`,
-    register: `${api_ip}/register`
+    register: `${api_ip}/house/register`
 }
 
 /**
@@ -18,19 +18,18 @@ const getHouses = async () => {
 }
 
 /**
- * Send a with a POST method a request to api and 
- * register the house
- * @param {JSON} json 
+ * Send a post request to the API
+ * @house 
  */
-const postHouse = async (json) => {
-    try {
-        let register = await fetch(urls.register, {json});
-        register = await register.json();
-        register = await register.text();
-        alert('hey')
-        console.log(register);
-        let e = Promise.reject();
-    } catch(error) {console.log(error);}
+const postHouse = async (house) => {
+    const json = {
+        method: 'POST',
+        body: JSON.stringify(house),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+    return fetch(urls.register, json)
 }
 
 
@@ -64,8 +63,10 @@ const login = async (admin) => {
     return login;
 }
 
+/**
+ * Get the house RT giving the id of the house
+ */
 const getHouseRT = async (houseid) => {
-    //TODO: Call API and get houses
     let url = new URL(urls.housert);
     url.search = new URLSearchParams({houseid})
     let housert = await fetch(url);
