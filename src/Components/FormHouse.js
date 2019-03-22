@@ -9,7 +9,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Button, Select, FormControl } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
-
+import Map from './map';
 
 const styles = theme => ({
   container: {
@@ -78,7 +78,6 @@ const styles = theme => ({
 // ]
 
 class FormHouse extends React.Component {
-
   state = {
     ID: 666,
     NAME: '',
@@ -294,6 +293,7 @@ class FormHouse extends React.Component {
                   label='Tipo de pintura'
                   className={classes.textField}
                   required={true}/>
+                 <Map position={2/** ALGO */}/>  
               </ExpansionPanelDetails>
             </ExpansionPanel>
             <Button variant='contained' type='submit' className={classes.button}>Registrar</Button>
