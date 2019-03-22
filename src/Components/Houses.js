@@ -13,7 +13,6 @@ import { HomeIcon } from './Icons.js';
 import { Grid, CircularProgress } from '@material-ui/core';
 import api from '../helpers/api';
 import Paper from '@material-ui/core/Paper';
-
 const styles = theme => ({
   root: {
     width: '100%',

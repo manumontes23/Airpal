@@ -94,8 +94,9 @@ class FormHouse extends React.Component {
     FLOORMATERIAL: '',
     FLOORNUMBER: '',
     WALLSMATERIAL: '',
-    LATITUDE: '2',
-    ALTITUDE: "12",
+    LATITUDE: '',
+    LONGITUDE: '',
+    ALTITUDE: '',
     DISPLAY: 1,
     HOUSECODE: 3,
     INSTALLER: "1",
@@ -107,7 +108,27 @@ class FormHouse extends React.Component {
    */
   sendForm = async (e) => {
     e.preventDefault();
+    this.setLocation()
     api.postHouse(this.state);
+  }
+
+  /**
+   * Obtine la ubicación del dispositivo
+   */
+  setLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(ubication =>{
+        this.setState({
+          LONGITUDE:ubication.coords.longitude,
+          LATITUDE: ubication.coords.latitude,
+          ALTITUDE: ubication.coords.altitude
+        });        
+      });
+    } else {
+      alert('Debes activar la ubicación para registrarte')
+    }
+
+    
   }
   
   /**
