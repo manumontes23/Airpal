@@ -3,7 +3,8 @@ const api_ip = "http://35.237.240.199:3002/api";
 const urls = {
     houses: `${api_ip}/house`,
     housert: `${api_ip}/house/rt`,
-    admin_login: `${api_ip}/admin/login`
+    admin_login: `${api_ip}/admin/login`,
+    register: `${api_ip}/house/register`
 }
 
 /**
@@ -14,6 +15,21 @@ const getHouses = async () => {
     let houses = await fetch(urls.houses);
     houses = await houses.json();
     return houses;
+}
+
+/**
+ * Send a post request to the API
+ * @house 
+ */
+const postHouse = async (house) => {
+    const json = {
+        method: 'POST',
+        body: JSON.stringify(house),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+    return fetch(urls.register, json)
 }
 
 
@@ -47,8 +63,10 @@ const login = async (admin) => {
     return login;
 }
 
+/**
+ * Get the house RT giving the id of the house
+ */
 const getHouseRT = async (houseid) => {
-    //TODO: Call API and get houses
     let url = new URL(urls.housert);
     url.search = new URLSearchParams({houseid})
     let housert = await fetch(url);
@@ -59,5 +77,6 @@ const getHouseRT = async (houseid) => {
 export default {
     getHouses,
     getHouseRT,
-    login
+    login,
+    postHouse
 }
