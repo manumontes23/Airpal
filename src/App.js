@@ -34,8 +34,7 @@ class App extends Component {
    * If user login is successfull, saves the cookies for the session, and executes callback
    * If it doesn't, shows a message to the user
    */
-  logCheck = async (event, callback) => {
-    Cookies.saveSession("123321");
+  logCheck = async (data, callback) => {
     try{
       let user = await api.login({ID: 9908, PASSWORD: 123});
       user = await user.json();

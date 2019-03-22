@@ -4,8 +4,10 @@ import Typography from '@material-ui/core/Typography'
 import api from '../helpers/api'
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputLabel from '@material-ui/core/InputLabel';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Button } from '@material-ui/core';
+import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Button, Select, FormControl } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 
 
@@ -34,7 +36,7 @@ const styles = theme => ({
   paper: {
     paddingTop: 5,
     marginTop: '2em',
-    backgroundColor: '#0d47a1'
+    backgroundColor: '#1565c0'
   },
   tittle : {
     margin: 'auto',
@@ -45,7 +47,10 @@ const styles = theme => ({
   },
   details: {
     display: 'block',
-
+  },
+  formControl: {
+    margin: theme.spacing.unit,
+    minWidth: 170,
   },
   button: {
     borderRadius: 5,
@@ -59,22 +64,23 @@ const styles = theme => ({
   }
 });
 
-const revokedOptions = [
-  {
-    label: 'SI',
-    value: true,
-    key: 'revoked'
-  },
-  {
-    label: 'NO',
-    value: false,
-    key: 'not-revoked'
-  }
-]
+// const revokedOptions = [
+//   {
+//     label: 'SI',
+//     value: true,
+//     key: 'revoked'
+//   },
+//   {
+//     label: 'NO',
+//     value: false,
+//     key: 'not-revoked'
+//   }
+// ]
 
 class FormHouse extends React.Component {
 
   state = {
+    ID: 666,
     NAME: '',
     LASTNAME: '',
     ADDRESS: '',
@@ -88,14 +94,20 @@ class FormHouse extends React.Component {
     FLOORMATERIAL: '',
     FLOORNUMBER: '',
     WALLSMATERIAL: '',
+    LATITUDE: '2',
+    ALTITUDE: "12",
+    DISPLAY: 1,
+    HOUSECODE: 3,
+    INSTALLER: "1",
+    INSTALLDATE: "2018-11-04T00:00:00.000Z"
   }
 
   /**
    * Envia la petición HTTP con la información del formulario
    */
-  sendForm() {
-    api.postHouse(this.state.json())
-    console.log('onSubmit',this.state)
+  sendForm = async (e) => {
+    e.preventDefault();
+    api.postHouse(this.state);
   }
   
   /**
@@ -195,7 +207,7 @@ class FormHouse extends React.Component {
                   }
                   className={classes.textField}
                   type='number'/>
-                <TextField 
+                {/* <TextField 
                   id='house-revoked'
                   name='REVOKEHOUSE'
                   variant='outlined'
@@ -209,7 +221,31 @@ class FormHouse extends React.Component {
                     <option key={option.key} value={option.value}>
                       {option.label}
                     </option>
-                ))}</TextField>
+                  ))}
+                </TextField> */}
+                <FormControl variant="outlined" className={classes.formControl}>
+                  <InputLabel
+                    htmlFor="house-revokehouse"
+                  >
+                    Casa revocada
+                  </InputLabel>
+                  <Select
+                    native
+                    value={this.state.REVOKEHOUSE}
+                    onChange={this.handleChange('REVOKEHOUSE')}
+                    input={
+                      <OutlinedInput
+                        name="REVOKEHOUSE"
+                        labelWidth={200}
+                        id="house-revokehouse"
+                      />
+                    }
+                  >
+                    <option value="" />
+                    <option value={true}>SI</option>
+                    <option value={false}>NO</option>
+                  </Select>
+                </FormControl>
                 <TextField 
                   id='house-smokers'
                   variant='outlined'
