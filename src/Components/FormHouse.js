@@ -9,7 +9,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Button, Select, FormControl } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
-import Map from './map';
+import Map from './Map';
 
 const styles = theme => ({
   container: {
@@ -93,12 +93,17 @@ class FormHouse extends React.Component {
     FLOORMATERIAL: '',
     FLOORNUMBER: '',
     WALLSMATERIAL: '',
-    LATITUDE: '2',
-    ALTITUDE: "12",
+    LATITUDE: '',
+    LONGITUDE: '',
+    ALTITUDE: '',
     DISPLAY: 1,
     HOUSECODE: 3,
     INSTALLER: "1",
     INSTALLDATE: "2018-11-04T00:00:00.000Z"
+  }
+
+  componentDidMount(){
+    this.setLocation();
   }
 
   /**
@@ -108,7 +113,38 @@ class FormHouse extends React.Component {
     e.preventDefault();
     api.postHouse(this.state);
   }
+
+  /**
+   * Obtine la ubicación del dispositivo
+   */
+  setLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(ubication =>{
+        this.setState({
+          LONGITUDE:ubication.coords.longitude,
+          LATITUDE: ubication.coords.latitude,
+          ALTITUDE: ubication.coords.altitude
+        });        
+      });
+    } else {
+      alert('Debes activar la ubicación para registrarte')
+    }
+  }
+
+  getLocation = () => {
+    console.log("STATE: " , this.state)
+    return {
+      lat: this.state.LATITUDE,
+      lng: this.state.LONGITUDE
+    }
+  }
   
+  updatePositionFields = (position) => {
+    //TODO: MOSTRAR ESTO EN UNOS CAMPITOS DEL FORMULARIO AHÍ BIEN LINDOS <3
+    console.log("Position", position);
+  }
+  
+
   /**
    * Cambia el estade segun el evento que se ejecute
    * Param: 
@@ -293,10 +329,11 @@ class FormHouse extends React.Component {
                   label='Tipo de pintura'
                   className={classes.textField}
                   required={true}/>
-                 <Map position={2/** ALGO */}/>  
               </ExpansionPanelDetails>
             </ExpansionPanel>
             <Button variant='contained' type='submit' className={classes.button}>Registrar</Button>
+            <Map position={ this.getLocation() }
+              updatePositionFields = { this.updatePositionFields }/>  
           </form>
         </Paper>
       </div>
