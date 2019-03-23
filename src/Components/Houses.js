@@ -16,11 +16,14 @@ import Paper from '@material-ui/core/Paper';
 const styles = theme => ({
   root: {
     width: '100%',
+  overflowX: 'hidden',
+
   },
   nested: {
     paddingLeft: theme.spacing.unit * 4,
   },
   info: {
+    color: '#00ffff',
     paddingLeft: theme.spacing.unit * 5,
   },
   grid1: {
@@ -35,7 +38,7 @@ const styles = theme => ({
     heigh: '100%'
   },
   header: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   paper: {
     margin: 20,
