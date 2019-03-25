@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/Airpal/static/js/runtime~main.7a6908b4.js"
   },
   {
-    "revision": "f2cd4e98063753a15b50",
-    "url": "/Airpal/static/js/main.f2cd4e98.chunk.js"
+    "revision": "88a5145b974ad2d30b4f",
+    "url": "/Airpal/static/js/main.88a5145b.chunk.js"
   },
   {
     "revision": "107d594d054ed7fd6331",
     "url": "/Airpal/static/js/2.107d594d.chunk.js"
   },
   {
-    "revision": "f2cd4e98063753a15b50",
-    "url": "/Airpal/static/css/main.01cc1707.chunk.css"
+    "revision": "88a5145b974ad2d30b4f",
+    "url": "/Airpal/static/css/main.a1669c6a.chunk.css"
   },
   {
-    "revision": "50941b789d31acde9be1a0f0ce291d42",
+    "revision": "81986d9082704ed8e118350e6f110514",
     "url": "/Airpal/index.html"
   }
 ];
