@@ -10,22 +10,23 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Button, Select, FormControl } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Map from './Map';
-
 const styles = theme => ({
   container: {
     display: 'flexbox',
-    margin: '20px',
+    margin: '2em',
     borderRadius: 5,
     paddingTop: 15,
-    
+    width: '80%',
   },
   form: {
     display: 'flexbox',
-    margin: '20px',
+    margin: '10px',    
   },
   textField: {
     margin: theme.spacing.unit,
-    borderRadius: 5
+    borderRadius: 5,
+    backgroundColor: '#fff',
+    border: '8px solid #fff'
   },
   select: {
     margin: theme.spacing.unit,
@@ -36,46 +37,52 @@ const styles = theme => ({
   paper: {
     paddingTop: 5,
     marginTop: '2em',
-    backgroundColor: '#1565c0'
+    backgroundColor: '#424242',
+    borderRadius: 15,
   },
   tittle : {
-    margin: 'auto',
+    flexWrap: 'wrap',
+    color: '#000',  
+    width: '50%',
+    padding: '0.1em',
+    fontFamily: "'Righteous', cursive",
+    textOverflow: 'ellipsis'
   },
   dense: {
     marginTop: 20,
-    borderRadius: 5
+    borderRadius: 5,
+    backgroundColor: '#000a12'
   },
   details: {
-    display: 'block',
+    display: 'block'
   },
   formControl: {
     margin: theme.spacing.unit,
     minWidth: 170,
+    borderRadius: 5,
+    backgroundColor: '#fff',
+    border: '8px solid #fff'
   },
   button: {
+    border: '1.5px solid #00e5ff',
     borderRadius: 5,
-    marginTop: 15,
+    marginTop:20,
     marginBottom: 10,
+    color: '#00e5ff'
   },
   helperText: {
     color: '#424242',
     fontStyle: 'italic',
     fontSize: '1.3em'
+  },
+  heading: {
+    color: '#00e5ff'
+  },
+  expandIcon: {
+    color: '#00e5ff'
   }
 });
 
-// const revokedOptions = [
-//   {
-//     label: 'SI',
-//     value: true,
-//     key: 'revoked'
-//   },
-//   {
-//     label: 'NO',
-//     value: false,
-//     key: 'not-revoked'
-//   }
-// ]
 
 class FormHouse extends React.Component {
   state = {
@@ -132,16 +139,22 @@ class FormHouse extends React.Component {
   }
 
   getLocation = () => {
-    console.log("STATE: " , this.state)
     return {
       lat: this.state.LATITUDE,
       lng: this.state.LONGITUDE
     }
   }
   
+  /**
+   * Muestra los valores de latitud y longitud cuando se actualizan
+   */
   updatePositionFields = (position) => {
-    //TODO: MOSTRAR ESTO EN UNOS CAMPITOS DEL FORMULARIO AHÍ BIEN LINDOS <3
-    console.log("Position", position);
+    this.setState({
+      LONGITUDE:position.lat,
+      LATITUDE: position.lng,
+    });  
+    
+    // return currentPosition
   }
   
 
@@ -159,14 +172,13 @@ class FormHouse extends React.Component {
 
   render() {
     const { classes } = this.props;
-
     return (
       <div className={classes.container}>
-        <Typography className={classes.tittle} variant='h2' align='center'>Registro de Vivienda</Typography>
-        <Paper className={classes.paper} elevation={10}>
+        <Typography className={classes.tittle} variant='h2' align='left'>Registro de Vivienda...</Typography>
+        <Paper className={classes.paper} elevation={8}>
           <form className={classes.form} autoComplete="off" method='POST' onSubmit={this.sendForm}>
             <ExpansionPanel className={classes.dense}>
-              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
+              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className={classes.expandIcon}/>}>
                 <Typography className={classes.heading} variant='title'>Información de habitante</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails className={classes.details}>
@@ -226,7 +238,7 @@ class FormHouse extends React.Component {
               </ExpansionPanelDetails>
             </ExpansionPanel>
             <ExpansionPanel className={classes.dense}>
-              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
+              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className={classes.expandIcon}/>}>
                 <Typography variant='title' className={classes.heading}>Información Vivienda</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails className={classes.details}>
@@ -242,22 +254,6 @@ class FormHouse extends React.Component {
                   }
                   className={classes.textField}
                   type='number'/>
-                {/* <TextField 
-                  id='house-revoked'
-                  name='REVOKEHOUSE'
-                  variant='outlined'
-                  label='Casa revocada'
-                  fullWidth
-                  select
-                  className={classes.select}
-                  value={this.state.REVOKEHOUSE}
-                  onChange={this.handleChange('REVOKEHOUSE')}>
-                  {revokedOptions.map(option => (
-                    <option key={option.key} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </TextField> */}
                 <FormControl variant="outlined" className={classes.formControl}>
                   <InputLabel
                     htmlFor="house-revokehouse"
@@ -331,11 +327,35 @@ class FormHouse extends React.Component {
                   required={true}/>
               </ExpansionPanelDetails>
             </ExpansionPanel>
-            <Button variant='contained' type='submit' className={classes.button}>Registrar</Button>
-            <Map position={ this.getLocation() }
-              updatePositionFields = { this.updatePositionFields }/>  
+            <Button variant='outlined' size='large' type='submit' className={classes.button}>Registrar</Button>
           </form>
         </Paper>
+        <div>
+            <Typography className={classes.tittle} variant='h2' align={'left'} gutterBottom>Tu ubicación...</Typography>
+            <TextField
+              id="house-latitude"
+              label="Latitud"
+              defaultValue={this.state.LATITUDE}
+              className={classes.textField}
+              margin="normal"
+              InputProps={{
+                readOnly: true,
+              }}
+            />
+            <TextField
+              id="house-longitude"
+              label="Longitud"
+              defaultValue={this.state.LONGITUDE}
+              className={classes.textField}
+              margin="normal"
+              InputProps={{
+                readOnly: true,
+              }}
+            />
+            <Map
+            position={ this.getLocation() }
+            updatePositionFields = { this.updatePositionFields }/>         
+          </div>
       </div>
     );
   }
