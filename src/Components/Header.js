@@ -7,9 +7,6 @@ import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home'
 import { withRouter } from 'react-router-dom';
 
-
-
-
 const styles = theme => ({
     root: {
       flexGrow: 1,
@@ -22,6 +19,13 @@ const styles = theme => ({
     },
     hidden: {
       display: "none"
+    },
+    toolbar: {
+      background: '#000'
+    },
+    menuButton: {
+      fontFamily: "'Righteous', cursive",
+      color: '#00e5ff'
     }
   })
   
@@ -30,7 +34,7 @@ function Header(props) {
     return (
       <div className={classes.root}>
         <AppBar position="static">
-          <Toolbar>
+          <Toolbar className={classes.toolbar}>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
                 <HomeIcon/>
               AIRPAL

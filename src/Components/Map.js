@@ -1,17 +1,7 @@
 import React, { Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
-const style = {
-  container : {
-    marginBottom: '2em',
-    width: '50%',
-    height: '20em',
-  },
-  map : {
-    borderRadius: '15px',
-    boxShadow: '0 15px 10px #777'
-  }
-}
+  
 
 export class MapContainer extends Component {
   state = {
@@ -20,7 +10,6 @@ export class MapContainer extends Component {
     selectedPlace: {},
     position: this.props.position
   };
-
 
   onMarkerClick = (props, marker, e) => {
     this.setState({
@@ -50,26 +39,25 @@ export class MapContainer extends Component {
   }
 
   render() {
-    const { position} = this.state;
+    const { position } = this.state; 
     return (
-      <Map 
-        containerStyle={style.container}
-        style={style.map}
-        google={this.props.google} 
+      <Map google={this.props.google} 
         zoom={14}
         initialCenter={position}
         onClick = {this.onMapClicked}>
+ 
         <Marker onClick={this.onMarkerClick}
                 name={'Esta es tu casita <3 '} 
                 position={position}
                 draggable={true}
                 onDragend={this.positionMoved}/> 
+ 
         <InfoWindow
                   marker={this.state.activeMarker}
                   visible={this.state.showingInfoWindow}>
                     <div>
                       <h1>{this.state.selectedPlace.name}</h1>
-                    </div>
+            </div>
         </InfoWindow>
       </Map>
     );
