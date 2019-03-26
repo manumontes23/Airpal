@@ -9,7 +9,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Button, Select, FormControl } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
-import Map from './Map';
+import Map from './map';
 const styles = theme => ({
   container: {
     display: 'flexbox',
@@ -153,7 +153,7 @@ class FormHouse extends React.Component {
       LONGITUDE:position.lat,
       LATITUDE: position.lng,
     });  
-    
+    console.log(position)
     // return currentPosition
   }
   
