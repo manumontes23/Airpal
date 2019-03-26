@@ -23,7 +23,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "pull-upstream" : "git pull upstream airpal-frontend"
+    "pull-upstream": "git pull upstream airpal-frontend"
   },
   "eslintConfig": {
     "extends": "react-app"
