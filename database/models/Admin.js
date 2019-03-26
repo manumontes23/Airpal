@@ -1,12 +1,12 @@
 const admin = {};
 const connection = require('../connection');
-const tableNames = require('../tableNames');
 const crypto = require('crypto');
+const tableNames = require('../tableNames');
 
-//Nombre de la tabla en la base de datos
-admin.name = tableNames.admin;
+//Name of the table in the DB
+admin.name = "ADMIN";
 
-//Ruta usada en el API para hacer consultas a esta tabla en la base de datos
+//Route used for this table queries
 admin.href = '/' + admin.name.toLowerCase();
 
 //Queries
@@ -15,7 +15,7 @@ admin.queries = {
 
     getAllInstallations: ('SELECT * FROM ADMIN INNER JOIN INSTALLATION ON ADMIN.ID = INSTALLATION.INSTALLER')
         .replace(/ADMIN/, admin.name)
-        .replace('/INSTALLATION/', tableNames.installation),
+        .replace('/INSTALLATION/', tableNames.name),
 
     getAdminInstallations: (adminid) => {
         return (admin.queries.getAllInstallations + ' WHERE INSTALLATION.INSTALLER = @')

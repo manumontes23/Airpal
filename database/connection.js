@@ -1,15 +1,10 @@
-//Require a config JSON with the database config
+/**
+ * This module will require configuration module to config MySQL JSON module and then return that connection to 
+ * the server through module.exports
+ */
 const config = require('../config/dbconf');
-const MysqlJson = require('mysql-json');
-const connection = new MysqlJson(config);
+const mysql = require('mysql-json');
+const connection = new mysql(config);
 
-//Require 'mysql' lib and call its createConnection function
-/**const connection = require('mysql-json').createConnection(config, (err) => {
-  if(err){
-    throw err;
-  }
-  console.log("Connected!");
-});
-**/
 
 module.exports = connection;
