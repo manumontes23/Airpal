@@ -16,8 +16,7 @@ import Paper from '@material-ui/core/Paper';
 const styles = theme => ({
   root: {
     width: '100%',
-  overflowX: 'hidden',
-
+    overflowX: 'hidden',
   },
   nested: {
     paddingLeft: theme.spacing.unit * 4,
@@ -27,9 +26,7 @@ const styles = theme => ({
     paddingLeft: theme.spacing.unit * 5,
   },
   grid1: {
-    backgroundColor: '#2c387e',
     padding: 5,
-    borderRadius: 5,
     marginBottom: 5
   },
   grid2: {
@@ -41,13 +38,25 @@ const styles = theme => ({
     fontWeight: 'bold',
   },
   paper: {
+    color: 'white',
     margin: 20,
     padding: 10,
+    boxShadow: '19px 12px 16px -1px rgba(0,0,0,0.38)',
+    // boxShadow: '0px 0px 38px 0px rgba(0,255,255,0.43)',
+    backgroundColor: '#212121'
   },
   subheader: {
     color: '#2962ff',
     backgroundColor: 'rgba(224,224,224,0.9)'
   },
+  p: {
+    color: '#00ffff',
+    textShadow: '0px 0px 7px rgba(0,255,255,0.64)'
+  },
+  i: {
+    color: 'white',
+    textShadow: 'none'
+  }
 });
 
 
@@ -86,21 +95,21 @@ class ListObject extends Component {
                 <Grid container>
                   <Grid item className={classes.grid1}>
                     <Paper className={classes.paper} elevation={10}>
-                        <p>DISPLAY: {house.DISPLAY}</p>
-                        <p>EMAIL: <i>{house.EMAIL}</i></p> 
-                        <p>PHONE NUMBER: <i>{house.TELNUMBER} </i></p>
-                        <p >NUMBER OF RESIDENTS: <i>{house.ADDRESS}</i></p>
-                        <p >NUMBER OF FLOORS: <i>{house.FLOORNUMBER}</i></p>
-                        <p >NUMBER OF SMOKERS: <i>{house.SMOKERSNUMBER}</i></p>
-                        <p >NUMBER OF PETS: <i>{house.PETSNUMBER}</i></p>
-                        <p >IS REVOKED: <i>{house.REVOKEHOUSE}</i></p>
-                        <p >FLOOR MATERIAL: <i>{house.FLOORMATERIAL}</i></p>
-                        <p >WALLS MATERIAL: <i>{house.WALLSMATERIAL}</i></p>
-                        <p >PAINT TYPE: <i>{house.PAINTTYPE}</i></p>
-                        <p >LATITUDE: <i>{house.LATITUDE}</i></p>
-                        <p >ALTITUDE: <i>{house.ALTITUDE}</i></p>
-                        <p >LONGITUDE: <i>{house.LONGITUDE}</i></p>
-                        <p >INSTALLED FOR: <b>{house.INSTALLER}</b> ON: {house.INSTALLDATE.substring(0,10)}</p>
+                        <p className={classes.p}>DISPLAY: <b className={classes.i}>{house.DISPLAY}</b></p>
+                        <p className={classes.p}>EMAIL: <i className={classes.i}>{house.EMAIL}</i></p> 
+                        <p className={classes.p}>PHONE NUMBER: <i className={classes.i}>{house.TELNUMBER} </i></p>
+                        <p className={classes.p}>NUMBER OF RESIDENTS: <i className={classes.i}>{house.ADDRESS}</i></p>
+                        <p className={classes.p}>NUMBER OF FLOORS: <i className={classes.i}>{house.FLOORNUMBER}</i></p>
+                        <p className={classes.p}>NUMBER OF SMOKERS: <i className={classes.i}>{house.SMOKERSNUMBER}</i></p>
+                        <p className={classes.p}>NUMBER OF PETS: <i className={classes.i}>{house.PETSNUMBER}</i></p>
+                        <p className={classes.p}>IS REVOKED: <i className={classes.i}>{house.REVOKEHOUSE}</i></p>
+                        <p className={classes.p}>FLOOR MATERIAL: <i className={classes.i}>{house.FLOORMATERIAL}</i></p>
+                        <p className={classes.p}>WALLS MATERIAL: <i className={classes.i}>{house.WALLSMATERIAL}</i></p>
+                        <p className={classes.p}>PAINT TYPE: <i className={classes.i}>{house.PAINTTYPE}</i></p>
+                        <p className={classes.p}>LATITUDE: <i className={classes.i}>{house.LATITUDE}</i></p>
+                        <p className={classes.p}>ALTITUDE: <i className={classes.i}>{house.ALTITUDE}</i></p>
+                        <p className={classes.p}>LONGITUDE: <i className={classes.i}>{house.LONGITUDE}</i></p>
+                        <p className={classes.p}>INSTALLED FOR: <b className={classes.i}>{house.INSTALLER}</b> ON: <b className={classes.i}>{house.INSTALLDATE.substring(0,10)}</b></p>
                     </Paper>
                   </Grid>
                   <Grid className={classes.grid2} item>
