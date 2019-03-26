@@ -77,6 +77,9 @@ const styles = theme => ({
   },
   heading: {
     color: '#00e5ff'
+  },
+  expandIcon: {
+    color: '#00e5ff'
   }
 });
 
@@ -136,16 +139,22 @@ class FormHouse extends React.Component {
   }
 
   getLocation = () => {
-    console.log("STATE: " , this.state)
     return {
       lat: this.state.LATITUDE,
       lng: this.state.LONGITUDE
     }
   }
   
+  /**
+   * Muestra los valores de latitud y longitud cuando se actualizan
+   */
   updatePositionFields = (position) => {
-    //TODO: MOSTRAR ESTO EN UNOS CAMPITOS DEL FORMULARIO AHÍ BIEN LINDOS <3
-    console.log("Position", position);
+    this.setState({
+      LONGITUDE:position.lat,
+      LATITUDE: position.lng,
+    });  
+    
+    // return currentPosition
   }
   
 
@@ -163,14 +172,13 @@ class FormHouse extends React.Component {
 
   render() {
     const { classes } = this.props;
-
     return (
       <div className={classes.container}>
         <Typography className={classes.tittle} variant='h2' align='left'>Registro de Vivienda...</Typography>
         <Paper className={classes.paper} elevation={8}>
           <form className={classes.form} autoComplete="off" method='POST' onSubmit={this.sendForm}>
             <ExpansionPanel className={classes.dense}>
-              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
+              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className={classes.expandIcon}/>}>
                 <Typography className={classes.heading} variant='title'>Información de habitante</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails className={classes.details}>
@@ -230,7 +238,7 @@ class FormHouse extends React.Component {
               </ExpansionPanelDetails>
             </ExpansionPanel>
             <ExpansionPanel className={classes.dense}>
-              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
+              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className={classes.expandIcon}/>}>
                 <Typography variant='title' className={classes.heading}>Información Vivienda</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails className={classes.details}>
@@ -324,7 +332,26 @@ class FormHouse extends React.Component {
         </Paper>
         <div>
             <Typography className={classes.tittle} variant='h2' align={'left'} gutterBottom>Tu ubicación...</Typography>
-            
+            <TextField
+              id="house-latitude"
+              label="Latitud"
+              defaultValue={this.state.LATITUDE}
+              className={classes.textField}
+              margin="normal"
+              InputProps={{
+                readOnly: true,
+              }}
+            />
+            <TextField
+              id="house-longitude"
+              label="Longitud"
+              defaultValue={this.state.LONGITUDE}
+              className={classes.textField}
+              margin="normal"
+              InputProps={{
+                readOnly: true,
+              }}
+            />
             <Map
             position={ this.getLocation() }
             updatePositionFields = { this.updatePositionFields }/>         
