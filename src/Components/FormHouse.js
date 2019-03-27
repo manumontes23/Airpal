@@ -162,7 +162,7 @@ class FormHouse extends React.Component {
       LONGITUDE:position.lat,
       LATITUDE: position.lng,
     });  
-    
+    console.log(position)
     // return currentPosition
   }
   
