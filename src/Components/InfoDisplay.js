@@ -75,7 +75,7 @@ class InfoDisplay extends Component {
         return <div className={classes.root}>
         <Paper className={classes.paper} square={false} elevation={6}>
             <Typography variant="subtitle1">
-                DISPOSITIVO: {rt.ID}
+                DISPOSITIVO: {rt.DISPLAY}
             </Typography>
             <Divider />
             <Typography>
