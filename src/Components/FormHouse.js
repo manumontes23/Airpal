@@ -159,8 +159,8 @@ class FormHouse extends React.Component {
    */
   updatePositionFields = (position) => {
     this.setState({
-      LONGITUDE:position.lat,
-      LATITUDE: position.lng,
+      LONGITUDE:position.lng,
+      LATITUDE: position.lat,
     });  
     console.log(position)
     // return currentPosition
@@ -348,7 +348,7 @@ class FormHouse extends React.Component {
             <TextField
               id="house-latitude"
               label="Latitud"
-              defaultValue={this.state.LATITUDE}
+              value={this.state.LATITUDE}
               className={classes.textField}
               margin="normal"
               InputProps={{
@@ -358,7 +358,7 @@ class FormHouse extends React.Component {
             <TextField
               id="house-longitude"
               label="Longitud"
-              defaultValue={this.state.LONGITUDE}
+              value={this.state.LONGITUDE}
               className={classes.textField}
               margin="normal"
               InputProps={{
