@@ -40,6 +40,7 @@ export class MapContainer extends Component {
   };
 
   positionMoved = (mapProps, map, pos) => {
+    console.log("POS", pos)
     this.setState({
         position: {
           lat: pos.latLng.lat(),

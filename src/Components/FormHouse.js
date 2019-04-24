@@ -87,25 +87,25 @@ const styles = theme => ({
 
 class FormHouse extends React.Component {
   state = {
-    ID: 666,
-    NAME: '',
-    LASTNAME: '',
-    ADDRESS: '',
-    TELNUMBER: '',
-    PETSNUMBER: '',
-    SMOKERSNUMBER: '',
-    PAINTTYPE: '',
-    REVOKEHOUSE: '',
-    EMAIL: '',
-    RESIDENTNUMBER: '',
-    FLOORMATERIAL: '',
-    FLOORNUMBER: '',
-    WALLSMATERIAL: '',
-    LATITUDE: '',
-    LONGITUDE: '',
-    ALTITUDE: '',
-    DISPLAY: 1,
-    HOUSECODE: 3,
+    ID: 666,  //ID of the house that will be installed
+    NAME: '', //NAME of the person that requested the installation of the display
+    LASTNAME: '', //LASTNAME of the person that requested the installation of the display
+    ADDRESS: '',  //ADDRES of the house where the house will be installed
+    TELNUMBER: '',  //TELNUMBER of the house/person owner of the house/display
+    PETSNUMBER: '', //Number of pets that live in the house
+    SMOKERSNUMBER: '',  //Number of smokers that live in the house
+    PAINTTYPE: '',  //String with type of paint of the house
+    REVOKEHOUSE: '',  //Is this house revoked?
+    EMAIL: '',  //EMAIL of the person that requested the installation
+    RESIDENTNUMBER: '', //Number of people that live in the house
+    FLOORMATERIAL: '',  //Material of the house's floor
+    FLOORNUMBER: '',  //Number of floors that the house has
+    WALLSMATERIAL: '',  //Material of the house's walls (Wood...)
+    LATITUDE: '', //Latitude at house's location
+    LONGITUDE: '',  //Longitued at house's location
+    ALTITUDE: '', //Altitude at house's location
+    DISPLAY: 1, //Display that'll be installed
+    HOUSECODE: 3, 
     INSTALLER: "1",
     INSTALLDATE: "2018-11-04T00:00:00.000Z"
   }
@@ -123,19 +123,27 @@ class FormHouse extends React.Component {
   }
 
   /**
-   * Obtine la ubicación del dispositivo
+   * Getting location from the house where display will be installed
    */
   setLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(ubication =>{
-        this.setState({
-          LONGITUDE:ubication.coords.longitude,
-          LATITUDE: ubication.coords.latitude,
-          ALTITUDE: ubication.coords.altitude
-        });        
-      });
+    if ( navigator.geolocation ) {
+      navigator.geolocation.getCurrentPosition(
+        (location) => {
+          this.setState({
+            LONGITUDE: location.coords.longitude,
+            LATITUDE: location.coords.latitude,
+            ALTITUDE: location.coords.altitude
+          });
+        },
+
+        /**
+         * Handling error: GEOLOCALIZATION DENIED
+         */
+        (error) => {
+          alert("Es necesario que tengas activada la ubicación en tu navegador");
+        });
     } else {
-      alert('Debes activar la ubicación para registrarte')
+      alert("Lo lamento, tu navegador no permite la geolocalización. Intenta con otro, por favor")
     }
   }
 
@@ -158,7 +166,6 @@ class FormHouse extends React.Component {
     // return currentPosition
   }
   
-
   /**
    * Cambia el estade segun el evento que se ejecute
    * Param: 
@@ -173,6 +180,11 @@ class FormHouse extends React.Component {
 
   render() {
     const { classes } = this.props;
+
+    const position = {
+      lat: this.state.LATITUDE,
+      lng: this.state.LONGITUDE
+    }
     return (
       <div className={classes.container}>
         <Typography className={classes.tittle} variant='h2' align='left'>Registro de Vivienda...</Typography>
@@ -354,7 +366,7 @@ class FormHouse extends React.Component {
               }}
             />
             <Map
-            position={ this.getLocation() }
+            position={ position }
             updatePositionFields = { this.updatePositionFields }/>         
           </div>
       </div>
