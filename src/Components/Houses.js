@@ -17,13 +17,16 @@ const styles = theme => ({
   root: {
     width: '100%',
     overflowX: 'hidden',
+    backgroundColor:'#424242'
   },
   nested: {
     paddingLeft: theme.spacing.unit * 4,
+    background: 'linear-gradient(to right bottom, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #eeeeee, #dddddd, #cccccc, #a7a7a7, #848484, #626262, #424242);'
   },
   info: {
     color: '#00ffff',
     paddingLeft: theme.spacing.unit * 5,
+    
   },
   grid1: {
     padding: 5,
@@ -42,12 +45,11 @@ const styles = theme => ({
     margin: 20,
     padding: 10,
     boxShadow: '19px 12px 16px -1px rgba(0,0,0,0.38)',
-    // boxShadow: '0px 0px 38px 0px rgba(0,255,255,0.43)',
     backgroundColor: '#212121'
   },
   subheader: {
     color: '#2962ff',
-    backgroundColor: 'rgba(224,224,224,0.9)'
+    backgroundColor: 'rgba(224,224,224,0.9)',
   },
   p: {
     color: '#00ffff',
@@ -83,9 +85,9 @@ class ListObject extends Component {
               <HomeIcon />  
             </ListItemIcon>
             <div className={classes.header}>
-                <p>ID: {house.ID}</p> 
-                <p>FULL NAME: {house.LASTNAME} {house.NAME}</p>
-                <p>ADDRESS: {house.ADDRESS} </p>
+                <p className={classes.i}>ID: {house.ID}</p> 
+                <p className={classes.i}>FULL NAME: {house.LASTNAME} {house.NAME}</p>
+                <p className={classes.i}>ADDRESS: {house.ADDRESS} </p>
             </div>
             {this.state.open ? <ExpandMore/> : <ExpandLess />}
           </ListItem>

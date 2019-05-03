@@ -10,14 +10,14 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Button, Select, FormControl } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Map from './Map';
-
 const styles = theme => ({
   container: {
     display: 'flexbox',
-    margin: '2em',
+    margin: '2em', 
     borderRadius: 5,
     paddingTop: 15,
     width: '80%',
+    backgroundColor: ''
   },
   form: {
     display: 'flexbox',
@@ -28,6 +28,7 @@ const styles = theme => ({
     borderRadius: 5,
     backgroundColor: '#fff',
     border: '8px solid #fff'
+
   },
   select: {
     margin: theme.spacing.unit,
@@ -47,7 +48,6 @@ const styles = theme => ({
     width: '50%',
     padding: '0.1em',
     fontFamily: "'Righteous', cursive",
-    textOverflow: 'ellipsis'
   },
   dense: {
     marginTop: 20,
@@ -162,7 +162,7 @@ class FormHouse extends React.Component {
       LONGITUDE:position.lng,
       LATITUDE: position.lat,
     });  
-    console.log(position)
+    console.log('position',position)
     // return currentPosition
   }
   
@@ -372,11 +372,6 @@ class FormHouse extends React.Component {
       </div>
     );
   }
-}
-
-
-function _Map(){
-  
 }
 
 FormHouse.propTypes = {
