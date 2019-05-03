@@ -26,7 +26,6 @@ const config = (req, res, next) => {
   next();
 }
 
-
 app.use(config);
 
 //Main route for the api backend of the server

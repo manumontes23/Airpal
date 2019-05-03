@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const tables =  require('../../database/tables');
-const pojoHouse = require('../../POJOS/pjhouse');
+const tables =  require('../database/tables');
+const pojoHouse = require('../POJOS/pjhouse');
 
 router.get("/", (req, res) => {
     tables.House.getAllInstallations((err, rows) => {
+        if(err) throw err;
         res.json(rows);
         console.log(rows);
     });
@@ -16,29 +17,14 @@ router.get('/display', (req, res) => {
     });
 });
 
-router.get('/variables', (req, res) => {
-    tables.House.getHouseVariables(req.query.houseid, (err, rows) => {
-        if(err)throw err;
-        console.log(rows);
-        res.json(rows);
-    });
-});
-
-router.get('/RT', (req, res) => {
+router.get('/:houseid/RT', (req, res) => {
     console.log(req.query.houseid);
-    tables.House.getHouseRT(req.query.houseid, (rows) => {
+    tables.House.getHouseRT(req.params.houseid, (rows) => {
         console.log(rows);
         res.json(rows[0]);
     });
 });
 
-router.get('/rthist', (req, res) => {
-    console.log(req.query.houseid);
-    tables.House.getHouseRT(req.query.houseid, (rows) => {
-        console.log(rows);
-        res.json(rows);
-    });
-});
 
 /**
  * Method @POST

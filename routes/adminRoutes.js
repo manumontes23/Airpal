@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const tables =  require('../../database/tables');
-const pojo = require('../../POJOS/pjadmin');
+const tables =  require('../database/tables');
+const pojo = require('../POJOS/pjadmin');
 
 router.get("/", function(req, res, next) {
     tables.Admin.getAll((err, data) => {
@@ -14,9 +14,10 @@ router.get("/", function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next){
+    console.log(req.body)
     ID = req.body.ID;
     PASSWORD = req.body.PASSWORD;
-    console.log(req.body);
+    console.log(ID);
     tables.Admin.get(ID, PASSWORD, (err, rows) => {
         if(err) throw err;
         if(rows){

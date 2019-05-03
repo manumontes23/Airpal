@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const connection  = require('../../database/connection');
-const tables =  require('../../database/tables');
+const connection  = require('../database/connection');
+const tables =  require('../database/tables');
 
 /**
  * Queries relativos a las consultas fundamentales que necesita la aplicación
@@ -24,7 +24,6 @@ const queries = {
      * @returns {string}
      */
     getHouseRT: function(id) {
-        let house = tables.house;
         let query = 'SELECT tableH.ID, tableH.NAME, tableH.LASTNAME, tableH.ADDRESS, tableH.TELNUMBER, tableI.DISPLAY, tableR.* ' +
             'FROM tableH ' +
             'INNER JOIN tableI ' +
