@@ -37,18 +37,20 @@ class App extends Component {
    * If user login is successfull, saves the cookies for the session, and executes callback
    * If it doesn't, shows a message to the user
    */
-  logCheck = async (data, callback) => {
+  logCheck = async ( data, redirectCallback ) => {
     try{
-      let user = await api.login({ID: 9908, PASSWORD: 123});
+      console.log("DATA", data);
+      let user = await api.login(data);
       user = await user.json();
+
+      if(!user) throw "NOT USER";
 
       //Update session_id state
       const session_id = user.ID;
       this.setState({ session_id });
-      //We save the session in the coolkes
+      //We save the session in the cookies
       Cookies.saveSession(user.ID);
-      //Exec callback
-      callback();
+      redirectCallback("/home")
     }catch(err){
       this.userNotFound();
     }
