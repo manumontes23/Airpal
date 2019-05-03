@@ -56,11 +56,8 @@ const styles = theme => ({
  */
 function SignIn(props) {
   const redirectHome = () => props.history.push("/home"); 
-
   if(props.isLoggedIn) redirectHome();
-
   const { classes } = props;
-
   function send(e) {
       e.preventDefault();
       props.logCheck(e, redirectHome);

@@ -7,7 +7,8 @@ import { BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 import Cookies from './helpers/Cookies.js';
 import api from './helpers/api.js';
 import AdminList from './Components/AdminList'
-import DisplayList from './Components/DisplayList'
+import DisplayList from './Components/DisplayList.js'
+import Warnings from './Components/Warnings'
 
 class App extends Component {
 
@@ -89,6 +90,7 @@ class App extends Component {
           <Route exact path="/home" component={Home} />
           <Route exact path='/admin' render={() => <AdminList/>}/>
           <Route exact path='/displays' render={() => <DisplayList />}/>
+          <Route exact path='/warnings' render={() => <Warnings />}/>
           </div>
           :
           <Redirect from='*' to='/' />

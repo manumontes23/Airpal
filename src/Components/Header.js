@@ -55,7 +55,7 @@ function Header(props) {
               color="inherit" 
               className={isLoggedIn ? classes.button : classes.hidden}
               onClick={() => props.history.push("/displays")}>
-              Displays
+              Devices
             </Button>
             <Button               
               color="inherit" 
@@ -66,7 +66,7 @@ function Header(props) {
             <Button               
               color="inherit" 
               className={isLoggedIn ? classes.button : classes.hidden}
-              onClick={() => props.history.push("/home")}>
+              onClick={() => props.history.push("/warnings")}>
               Warnings
             </Button>
             <Button               
