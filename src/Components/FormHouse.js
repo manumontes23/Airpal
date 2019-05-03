@@ -10,6 +10,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Button, Select, FormControl } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Map from './Map';
+import Cookies from '../helpers/Cookies.js';
+
+
 const styles = theme => ({
   container: {
     display: 'flexbox',
@@ -87,26 +90,25 @@ const styles = theme => ({
 
 class FormHouse extends React.Component {
   state = {
-    ID: 666,  //ID of the house that will be installed
     NAME: '', //NAME of the person that requested the installation of the display
     LASTNAME: '', //LASTNAME of the person that requested the installation of the display
-    ADDRESS: '',  //ADDRES of the house where the house will be installed
+    EMAIL: '',  //EMAIL of the person that requested the installation
     TELNUMBER: '',  //TELNUMBER of the house/person owner of the house/display
+    ADDRESS: '',  //ADDRES of the house where the house will be installed
+    RESIDENTNUMBER: '', //Number of people that live in the house
+    FLOORNUMBER: '',  //Number of floors that the house has
+    REVOKEHOUSE: '',  //Is this house revoked?
     PETSNUMBER: '', //Number of pets that live in the house
     SMOKERSNUMBER: '',  //Number of smokers that live in the house
     PAINTTYPE: '',  //String with type of paint of the house
-    REVOKEHOUSE: '',  //Is this house revoked?
-    EMAIL: '',  //EMAIL of the person that requested the installation
-    RESIDENTNUMBER: '', //Number of people that live in the house
     FLOORMATERIAL: '',  //Material of the house's floor
-    FLOORNUMBER: '',  //Number of floors that the house has
     WALLSMATERIAL: '',  //Material of the house's walls (Wood...)
     LATITUDE: '', //Latitude at house's location
     LONGITUDE: '',  //Longitued at house's location
     ALTITUDE: '', //Altitude at house's location
     DISPLAY: 1, //Display that'll be installed
     HOUSECODE: 3, 
-    INSTALLER: "1",
+    INSTALLER: Cookies.getSession(),
     INSTALLDATE: "2018-11-04T00:00:00.000Z"
   }
 
@@ -285,9 +287,8 @@ class FormHouse extends React.Component {
                       />
                     }
                   >
-                    <option value="" />
-                    <option value={true}>SI</option>
-                    <option value={false}>NO</option>
+                    <option value={"SI"}>SI</option>
+                    <option value={"NO"}>NO</option>
                   </Select>
                 </FormControl>
                 <TextField 
