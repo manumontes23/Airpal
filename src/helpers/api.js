@@ -1,5 +1,5 @@
 
-const api_ip = "http://35.237.240.199:3002/api"; //http://35.237.240.199:3002/api";
+const api_ip = "https://airpal-backend.herokuapp.com/api"; //http://35.237.240.199:3002/api";
 const urls = {
     houses: `${api_ip}/house`,
     housert: `${api_ip}/house/rt`,
@@ -49,7 +49,7 @@ const login = async (admin) => {
         ID: `${admin.ID}`,
         PASSWORD: `${admin.PASSWORD}`
     };
-    
+    console.log(admin);
     const json = {
         method: 'POST',
         body: JSON.stringify(body),

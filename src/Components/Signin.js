@@ -63,7 +63,11 @@ function SignIn(props) {
 
   function send(e) {
       e.preventDefault();
-      props.logCheck(e, redirectHome);
+      const data = {
+        ID: e.target.id.value,
+        PASSWORD: e.target.password.value
+      };
+      props.logCheck(data, redirectHome);
   }
 
   return (
@@ -76,14 +80,14 @@ function SignIn(props) {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} onSubmit={send}>
+        <form id="signin-form" className={classes.form} onSubmit={send}>
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="email">ID</InputLabel>
-            <Input id="email" name="email" autoComplete="email" autoFocus />
+            <Input form="signin-form"  name="id" autoComplete="id" autoFocus />
           </FormControl>
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="password">Contraseña</InputLabel>
-            <Input name="password" type="password" id="password" autoComplete="current-password" />
+            <Input form="signin-form" name="password" type="password" id="password" />
           </FormControl>
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
