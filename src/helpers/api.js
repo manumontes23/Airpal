@@ -1,5 +1,5 @@
 
-const api_ip = "http://localhost:5050/api";//"http://35.237.240.199:3002/api";
+const api_ip = "http://35.237.240.199:3002/api";//"http://localhost:5050/api";
 const urls = {
     houses: `${api_ip}/house`,
     housert: `${api_ip}/house/rt`,
