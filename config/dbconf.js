@@ -3,10 +3,10 @@
   * Used in connection.js to create a connection with this db
 **/
 const data = {
-  host: '35.198.8.0',
-  user: 'root',
-  password: "Medell1n", //Medell1n
-  database: 'Envigado'
+  host: 'remotemysql.com',
+  user: 'ae1Q6As4pi',
+  password: "ppAjm33oL1", //Medell1n
+  database: 'ae1Q6As4pi'
 };
 
 function decrypt(text){
