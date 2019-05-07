@@ -4,9 +4,6 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const app = express();
 const apiRouter = require('./routes/apiRoutes');
-
-
-
 const cors = require('cors');
 
 app.use(cors());
@@ -19,7 +16,8 @@ app.use(bodyParser.json());
 //Main route for the api backend of the server
 app.use('/api', apiRouter);
 
-app.get('/', (req, res) => res.redirect('/api'));
+//app.get('/', (req, res) => res.redirect('/api'));
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

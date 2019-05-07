@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const tables =  require('../database/tables');
 const pojo = require('../POJOS/pjadmin');
+const crypto = require('crypto');
 
 router.get("/", function(req, res, next) {
     tables.Admin.getAll((err, data) => {
@@ -31,12 +32,16 @@ router.post('/login', function(req, res, next){
 });
 
 router.post('/register', function(req, res, next){
+    console.log("OA");
+    console.log("BODY", req.body);
     pojo.ID = req.body.id;
     pojo.NAME = req.body.name;
     pojo.LASTNAME = req.body.lastname;
     pojo.PASSWORD = crypto.createHash('md5').update(req.body.password).digest("hex");
+    console.log("POJO AAAAAAAAAAAAAAAAAA");
+    console.log(pojo);
     tables.Admin.insert(pojo, (response) => {
-        res.send(response);
+        res.json(response);
     });
 });
 
