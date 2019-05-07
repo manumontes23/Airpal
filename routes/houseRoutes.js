@@ -112,8 +112,12 @@ router.post("/register", (req, res) => {
 router.delete('/House/:id',(req,res)=>{
     let id = req.param.id
     console.log(id)
-    tables.House.delete(req.param.id,rows => {
-        res.json(rows);
+    tables.House.delete(req.param.id,(err,resHouse) => {
+        if (err) throw err;
+        if(resHouse){
+            console.log("House Deleted");
+            res.status(200).send(resHouse);
+        }
     });     
 
 })
