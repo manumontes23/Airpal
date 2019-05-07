@@ -112,7 +112,7 @@ house.queries = {
             return query;
     },
     delete:(houseId)=>{
-        let query ="DELETE * FROM HOUSE WHERE ID = "+id;
+        let query ="DELETE * FROM HOUSE WHERE ID = "+houseId;
         return query;
     }
 };
