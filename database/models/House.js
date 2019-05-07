@@ -110,6 +110,10 @@ house.queries = {
                 .replace(/RT/g, tables.RT.name)
                 .replace('@', houseid);
             return query;
+    },
+    delete:(houseId)=>{
+        let query ="DELETE * FROM HOUSE WHERE ID = "+id;
+        return query;
     }
 };
 
@@ -217,5 +221,18 @@ house.getDisplayStatus = (houseid, callback) => {
         });
     }
 };
+
+/**
+ * Delete one house from DB
+ * @param houseid 
+ */
+house.delete=(houseid,callback)=>{
+    if(connection){
+        console.log(house.queries.delete(houseid));
+        connection.query(house.queries.delete(houseid),(err,res)=>{
+            callback(err,res);
+        })
+    }
+}
 
 module.exports = house;
