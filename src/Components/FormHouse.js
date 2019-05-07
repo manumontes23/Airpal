@@ -287,8 +287,9 @@ class FormHouse extends React.Component {
                       />
                     }
                   >
-                    <option value={"SI"}>SI</option>
-                    <option value={"NO"}>NO</option>
+                    <option value="" />
+                    <option value={'SI'}>SI</option>
+                    <option value={'NO'}>NO</option>
                   </Select>
                 </FormControl>
                 <TextField 
