@@ -104,4 +104,18 @@ router.post("/register", (req, res) => {
      });
 });
 
+
+/**
+ * Method @Delete
+ * this method delete a house
+ */
+router.delete('/House/:id',(req,res)=>{
+    let id = req.param.id
+    console.log(id)
+    tables.House.delete(req.param.id,rows => {
+        res.json(rows);
+    });     
+
+})
+
 module.exports = router;
