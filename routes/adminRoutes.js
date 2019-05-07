@@ -32,13 +32,10 @@ router.post('/login', function(req, res, next){
 });
 
 router.post('/register', function(req, res, next){
-    console.log("OA");
-    console.log("BODY", req.body);
     pojo.ID = req.body.id;
     pojo.NAME = req.body.name;
     pojo.LASTNAME = req.body.lastname;
     pojo.PASSWORD = crypto.createHash('md5').update(req.body.password).digest("hex");
-    console.log("POJO AAAAAAAAAAAAAAAAAA");
     console.log(pojo);
     tables.Admin.insert(pojo, (response) => {
         res.json(response);
